@@ -1,0 +1,15 @@
+<nav class="nav" aria-label="Primary">
+  @for (item of items; track item.id) {
+    <a
+      class="dest"
+      [routerLink]="link(item)"
+      [fragment]="fragment(item)"
+      [class.dest--active]="isActive(item.id)"
+      [attr.aria-current]="ariaCurrent(item)">
+      <span class="indicator" aria-hidden="true">
+        <mat-icon [svgIcon]="item.icon" />
+      </span>
+      <span class="label">{{ item.label }}</span>
+    </a>
+  }
+</nav>

@@ -1,9 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { Skeleton } from '../../shared/ui/skeleton/skeleton';
 
 @Component({
-  imports: [],
   selector: 'app-footer',
+  imports: [Skeleton],
   styleUrl: './footer.scss',
   templateUrl: './footer.html',
 })
-export class Footer {}
+export class Footer {
+  readonly name = input<string | undefined>();
+
+  protected readonly year = new Date().getFullYear();
+}

@@ -1,3 +1,109 @@
+@use '../../../styles/breakpoints' as bp;
+
 :host {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: block;
+  background: var(--mat-sys-surface);
+  border-bottom: 1px solid var(--mat-sys-outline-variant);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 16px;
+  height: 72px;
+  max-width: var(--app-content-width);
+  margin-inline: auto;
+  padding-inline: var(--app-gutter);
+
+  @include bp.from(expanded) {
+    grid-template-columns: 1fr auto 1fr;
+  }
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 12px;
+  color: var(--mat-sys-on-surface);
+  text-decoration: none;
+
+  &:focus-visible {
+    outline: 2px solid var(--mat-sys-primary);
+    outline-offset: 2px;
+  }
+}
+
+.monogram {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  background: var(--mat-sys-primary-container);
+  color: var(--mat-sys-on-primary-container);
+  font-family: var(--app-font-mono);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.name {
+  font-size: 16px;
+  font-weight: 500;
+
+  // Only the monogram and toggle show while the bottom nav is in use.
+  @include bp.below(expanded) {
+    display: none;
+  }
+}
+
+.sections {
+  display: none;
+
+  @include bp.from(expanded) {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+  }
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 20px;
+  color: var(--mat-sys-on-surface-variant);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 120ms ease;
+
+  &:hover {
+    background: color-mix(in srgb, var(--mat-sys-on-surface) 8%, transparent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--mat-sys-primary);
+    outline-offset: 2px;
+  }
+
+  &--active {
+    background: var(--mat-sys-secondary-container);
+    color: var(--mat-sys-on-secondary-container);
+  }
+}
+
+app-theme-toggle {
+  justify-self: end;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pill {
+    transition: none;
+  }
 }

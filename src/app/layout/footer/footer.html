@@ -1,0 +1,11 @@
+<div class="inner">
+  <p class="copyright">
+    <span>© {{ year }}</span>
+    @if (name(); as n) {
+      <span>{{ n }}</span>
+    } @else {
+      <app-skeleton width="120px" height="16px" />
+    }
+  </p>
+  <p class="credit">built with Angular · Material 3</p>
+</div>

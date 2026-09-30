@@ -1,0 +1,6 @@
+<svg class="trace" viewBox="0 0 1200 40" aria-hidden="true" focusable="false">
+  <path class="line" [attr.d]="pattern().d" />
+  @for (via of pattern().vias; track $index) {
+    <circle class="via" [attr.cx]="via[0]" [attr.cy]="via[1]" r="3.5" />
+  }
+</svg>

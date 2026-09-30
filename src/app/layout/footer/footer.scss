@@ -1,3 +1,31 @@
 :host {
   display: block;
+  border-top: 1px solid var(--mat-sys-outline-variant);
+}
+
+.inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  max-width: var(--app-content-width);
+  margin-inline: auto;
+  padding: 24px var(--app-gutter);
+}
+
+.copyright {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  color: var(--mat-sys-on-surface-variant);
+  font-size: 14px;
+}
+
+.credit {
+  margin: 0;
+  color: var(--mat-sys-on-surface-variant);
+  font-family: var(--app-font-mono);
+  font-size: 13px;
 }

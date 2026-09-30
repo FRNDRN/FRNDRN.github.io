@@ -1,3 +1,77 @@
+@use '../../../styles/breakpoints' as bp;
+
 :host {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 100;
   display: block;
+  background: var(--mat-sys-surface-container);
+  border-top: 1px solid var(--mat-sys-outline-variant);
+  padding-bottom: env(safe-area-inset-bottom);
+
+  // The bottom nav only exists below the expanded breakpoint.
+  @include bp.from(expanded) {
+    display: none;
+  }
+}
+
+.nav {
+  display: flex;
+  align-items: stretch;
+  height: 80px;
+  max-width: var(--app-content-width);
+  margin-inline: auto;
+}
+
+.dest {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 48px;
+  padding: 8px 0;
+  color: var(--mat-sys-on-surface-variant);
+  text-decoration: none;
+
+  &:focus-visible {
+    outline: 2px solid var(--mat-sys-primary);
+    outline-offset: -2px;
+  }
+}
+
+.indicator {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 32px;
+  border-radius: 16px;
+  transition: background-color 120ms ease;
+
+  mat-icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.dest--active {
+  color: var(--mat-sys-on-surface);
+
+  .indicator {
+    background: var(--mat-sys-secondary-container);
+    color: var(--mat-sys-on-secondary-container);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .indicator {
+    transition: none;
+  }
 }

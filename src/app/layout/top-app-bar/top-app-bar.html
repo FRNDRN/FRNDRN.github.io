@@ -1,0 +1,25 @@
+<div class="inner">
+  <a class="brand" routerLink="/" aria-label="Home">
+    <span class="monogram" aria-hidden="true">FA</span>
+    @if (name(); as n) {
+      <span class="name">{{ n }}</span>
+    } @else {
+      <app-skeleton class="name" width="132px" height="20px" />
+    }
+  </a>
+
+  <nav class="sections" aria-label="Sections">
+    @for (item of items; track item.id) {
+      <a
+        class="pill"
+        routerLink="/"
+        [fragment]="item.id"
+        [class.pill--active]="isActive(item.id)"
+        [attr.aria-current]="ariaCurrent(item.id)">
+        {{ item.label }}
+      </a>
+    }
+  </nav>
+
+  <app-theme-toggle />
+</div>

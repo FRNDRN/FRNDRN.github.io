@@ -1,5 +1,12 @@
+@use '../styles/breakpoints' as bp;
+
 :host {
   display: block;
+
+  // Clear the fixed bottom nav so it never covers the footer on small screens.
+  @include bp.below(expanded) {
+    padding-bottom: calc(80px + env(safe-area-inset-bottom));
+  }
 }
 
 .skip-link {
