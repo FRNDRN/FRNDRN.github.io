@@ -1,0 +1,9 @@
+<button
+  matIconButton
+  type="button"
+  class="toggle"
+  [attr.aria-label]="label()"
+  [matTooltip]="label()"
+  (click)="cycleTheme()">
+  <mat-icon [svgIcon]="icon()" />
+</button>

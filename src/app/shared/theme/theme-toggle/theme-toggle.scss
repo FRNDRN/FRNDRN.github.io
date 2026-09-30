@@ -1,0 +1,25 @@
+@use '@angular/material' as mat;
+@use '../../../../styles/breakpoints' as bp;
+
+:host {
+  display: inline-flex;
+
+  // 44px surface-tinted button as in the design; icons stay at 20px.
+  @include mat.icon-button-overrides((
+    icon-color: var(--mat-sys-on-surface-variant),
+    icon-size: 20px,
+    state-layer-size: 44px,
+  ));
+
+  // Keep the 48x48 touch-target minimum where the bottom nav is used.
+  @include bp.below(expanded) {
+    @include mat.icon-button-overrides((
+      state-layer-size: 48px,
+    ));
+  }
+}
+
+.toggle {
+  background: var(--mat-sys-surface-container-high);
+  border-radius: 50%;
+}
