@@ -6,7 +6,8 @@
 
 .item {
   display: block;
-  background: var(--mat-sys-surface-container-high);
+  // Overridable so skeletons can tint themselves on coloured surfaces (e.g. contact).
+  background: var(--app-skeleton-color, var(--mat-sys-surface-container-high));
 
   &--text { border-radius: 4px; }
   &--rect { border-radius: 12px; }
@@ -18,9 +19,9 @@
   .item {
     background: linear-gradient(
       90deg,
-      var(--mat-sys-surface-container-high) 25%,
-      var(--mat-sys-surface-container) 50%,
-      var(--mat-sys-surface-container-high) 75%
+      var(--app-skeleton-color, var(--mat-sys-surface-container-high)) 25%,
+      var(--app-skeleton-highlight, var(--mat-sys-surface-container)) 50%,
+      var(--app-skeleton-color, var(--mat-sys-surface-container-high)) 75%
     );
     background-size: 200% 100%;
     animation: skeleton-shimmer 1.5s ease-in-out infinite;

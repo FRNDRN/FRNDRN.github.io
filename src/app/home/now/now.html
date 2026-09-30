@@ -1,0 +1,29 @@
+<section id="now" class="now" aria-labelledby="now-title">
+  <div class="inner">
+    <div class="card">
+      <app-section-header
+        class="heading"
+        name="now"
+        headingId="now-title"
+        title="What I'm working on" />
+
+      @if (items(); as list) {
+        @for (item of list; track item.title) {
+          <div class="item">
+            <span class="dot" aria-hidden="true"></span>
+            <h3 class="item-title">{{ item.title }}</h3>
+            <p class="item-desc">{{ item.description }}</p>
+          </div>
+        }
+      } @else {
+        @for (i of placeholders; track i) {
+          <div class="item">
+            <span class="dot" aria-hidden="true"></span>
+            <app-skeleton class="item-title" width="60%" height="18px" />
+            <app-skeleton [lines]="2" height="15px" />
+          </div>
+        }
+      }
+    </div>
+  </div>
+</section>

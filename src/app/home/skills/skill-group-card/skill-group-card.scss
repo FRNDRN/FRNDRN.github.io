@@ -1,0 +1,113 @@
+@use '@angular/material' as mat;
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+.card {
+  height: 100%;
+  padding: 32px;
+  border-radius: 28px;
+}
+
+:host(.card--large) .card {
+  background: var(--mat-sys-surface-container-low);
+}
+
+:host(.card--outlined) .card {
+  border: 1px solid var(--mat-sys-outline-variant);
+}
+
+.glyph {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 16px;
+  border-radius: 14px;
+  font-family: var(--app-font-mono);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+:host(.card--primary) .glyph {
+  background: var(--mat-sys-primary-container);
+  color: var(--mat-sys-on-primary-container);
+}
+
+:host(.card--tertiary) .glyph {
+  background: var(--mat-sys-tertiary-container);
+  color: var(--mat-sys-on-tertiary-container);
+}
+
+.title {
+  margin: 0 0 4px;
+  font-weight: 500;
+}
+
+:host(.card--large) .title {
+  font-size: 22px;
+}
+
+:host(.card--outlined) .title {
+  font-size: 20px;
+}
+
+.subtitle {
+  margin: 0 0 12px;
+  color: var(--mat-sys-on-surface-variant);
+  font-size: 14px;
+}
+
+.chips {
+  margin-top: 12px;
+}
+
+.chips--skeleton {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+// Large cards: soft-filled chips.
+:host(.card--large) {
+  @include mat.chips-overrides(
+    (
+      container-height: 36px,
+      container-shape-radius: 10px,
+      label-text-size: 15px,
+      label-text-weight: 500,
+      outline-width: 0,
+      elevated-container-color: var(--mat-sys-surface-container-high),
+      label-text-color: var(--mat-sys-on-surface),
+    )
+  );
+}
+
+// Outlined cards: mono chips in primary.
+:host(.card--outlined) {
+  @include mat.chips-overrides(
+    (
+      container-height: 34px,
+      container-shape-radius: 8px,
+      label-text-font: var(--app-font-mono),
+      label-text-size: 13px,
+      outline-width: 1px,
+      outline-color: var(--mat-sys-outline-variant),
+      elevated-container-color: transparent,
+      label-text-color: var(--mat-sys-primary),
+    )
+  );
+}
+
+// Highlighted items (instruments): tonal tertiary chips.
+.chip--highlight {
+  @include mat.chips-overrides(
+    (
+      outline-width: 0,
+      elevated-container-color: var(--mat-sys-tertiary-container),
+      label-text-color: var(--mat-sys-on-tertiary-container),
+    )
+  );
+}

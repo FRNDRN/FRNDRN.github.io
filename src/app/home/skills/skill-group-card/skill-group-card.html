@@ -1,0 +1,29 @@
+<article class="card">
+  @if (group(); as g) {
+    @if (isLarge() && g.glyph) {
+      <span class="glyph" aria-hidden="true">{{ g.glyph }}</span>
+    }
+    <h3 class="title">{{ g.title }}</h3>
+    @if (g.subtitle; as subtitle) {
+      <p class="subtitle">{{ subtitle }}</p>
+    }
+    <mat-chip-set class="chips" aria-label="Skills">
+      @for (item of g.items; track item) {
+        <mat-chip class="chip">{{ item }}</mat-chip>
+      }
+      @for (item of g.highlightedItems ?? []; track item) {
+        <mat-chip class="chip chip--highlight">{{ item }}</mat-chip>
+      }
+    </mat-chip-set>
+  } @else {
+    @if (isLarge()) {
+      <app-skeleton class="glyph" shape="rect" width="48px" height="48px" />
+    }
+    <app-skeleton class="title" width="60%" height="22px" />
+    <div class="chips chips--skeleton" aria-hidden="true">
+      @for (i of placeholders; track i) {
+        <app-skeleton shape="pill" width="80px" height="36px" />
+      }
+    </div>
+  }
+</article>

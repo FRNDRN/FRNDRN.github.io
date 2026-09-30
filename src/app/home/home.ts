@@ -5,10 +5,25 @@ import { Hero } from './hero/hero';
 import { About } from './about/about';
 import { Experience } from './experience/experience';
 import { ProjectsSection } from './projects-section/projects-section';
+import { Skills } from './skills/skills';
+import { Education } from './education/education';
+import { Now } from './now/now';
+import { Contact } from './contact/contact';
 
 @Component({
   selector: 'app-home',
-  imports: [SectionAnchor, TraceDivider, Hero, About, Experience, ProjectsSection],
+  imports: [
+    SectionAnchor,
+    TraceDivider,
+    Hero,
+    About,
+    Experience,
+    ProjectsSection,
+    Skills,
+    Education,
+    Now,
+    Contact,
+  ],
   styleUrl: './home.scss',
   templateUrl: './home.html',
 })

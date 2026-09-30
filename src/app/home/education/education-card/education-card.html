@@ -1,0 +1,29 @@
+<article class="card">
+  <span class="icon" aria-hidden="true">
+    <mat-icon [svgIcon]="icon()" />
+  </span>
+
+  @if (item(); as it) {
+    <p class="meta">{{ it.meta }}</p>
+    <h3 class="title">{{ it.title }}</h3>
+    @if (it.institution; as institution) {
+      <p class="institution">{{ institution }}</p>
+    }
+    @if (it.link; as link) {
+      <a
+        class="link"
+        matButton="tonal"
+        [href]="link.url"
+        target="_blank"
+        rel="noopener"
+        [attr.aria-label]="link.label + ' (opens in a new tab)'">
+        {{ link.label }}
+        <mat-icon svgIcon="external-link" iconPositionEnd />
+      </a>
+    }
+  } @else {
+    <app-skeleton class="meta" width="160px" height="13px" />
+    <app-skeleton class="title" width="70%" height="24px" />
+    <app-skeleton class="institution" width="50%" height="16px" />
+  }
+</article>

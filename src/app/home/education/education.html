@@ -1,0 +1,17 @@
+<section id="education" class="education" aria-labelledby="education-title">
+  <div class="inner">
+    <app-section-header index="05" name="education" headingId="education-title" />
+
+    <div class="grid">
+      @if (items(); as list) {
+        @for (item of list; track item.id) {
+          <app-education-card [item]="item" />
+        }
+      } @else {
+        @for (i of placeholders; track i) {
+          <app-education-card />
+        }
+      }
+    </div>
+  </div>
+</section>

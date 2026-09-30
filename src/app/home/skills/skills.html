@@ -1,0 +1,27 @@
+<section id="skills" class="skills" aria-labelledby="skills-title">
+  <div class="inner">
+    <app-section-header index="04" name="skills" headingId="skills-title" />
+
+    @if (groups()) {
+      <div class="row row--large">
+        @for (group of largeGroups(); track group.id) {
+          <app-skill-group-card [group]="group" />
+        }
+      </div>
+      <div class="row row--outlined">
+        @for (group of outlinedGroups(); track group.id) {
+          <app-skill-group-card [group]="group" />
+        }
+      </div>
+    } @else {
+      <div class="row row--large">
+        <app-skill-group-card fallbackTone="primary" />
+        <app-skill-group-card fallbackTone="tertiary" />
+      </div>
+      <div class="row row--outlined">
+        <app-skill-group-card fallbackTone="outlined" />
+        <app-skill-group-card fallbackTone="outlined" />
+      </div>
+    }
+  </div>
+</section>

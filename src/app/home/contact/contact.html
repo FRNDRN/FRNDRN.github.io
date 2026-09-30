@@ -1,0 +1,56 @@
+<section id="contact" class="contact" aria-labelledby="contact-title">
+  <div class="inner">
+    <div class="block">
+      <app-section-header
+        class="header"
+        index="06"
+        name="contact"
+        headingId="contact-title"
+        tone="on-primary-container" />
+
+      <app-skeleton class="lead" [lines]="2" height="19px" />
+
+      <ul class="links">
+        @if (profile(); as p) {
+          <li>
+            <a [href]="'mailto:' + p.links.email">
+              <mat-icon svgIcon="mail" />
+              <span>{{ p.links.email }}</span>
+            </a>
+          </li>
+          <li>
+            <a
+              [href]="p.links.linkedin"
+              target="_blank"
+              rel="noopener"
+              aria-label="LinkedIn (opens in a new tab)">
+              <mat-icon svgIcon="linkedin" />
+              <span>LinkedIn</span>
+            </a>
+          </li>
+          <li>
+            <a
+              [href]="p.links.github"
+              target="_blank"
+              rel="noopener"
+              aria-label="GitHub (opens in a new tab)">
+              <mat-icon svgIcon="github" />
+              <span>GitHub</span>
+            </a>
+          </li>
+        } @else {
+          @for (i of linkPlaceholders; track i) {
+            <li class="link-skeleton">
+              <app-skeleton shape="circle" width="22px" height="22px" />
+              <app-skeleton width="200px" height="18px" />
+            </li>
+          }
+        }
+      </ul>
+
+      @if (profile()?.links?.cv; as cv) {
+        <a class="cv" matButton="filled" [href]="cv" download>Download CV (PDF)</a>
+      }
+    </div>
+  </div>
+</section>
