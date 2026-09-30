@@ -1,0 +1,19 @@
+@use 'sass:map';
+
+$_widths: (
+  medium:   600px,
+  expanded: 840px,
+  large:    1200px,
+);
+
+@mixin from($name) {
+  @media (min-width: #{map.get($_widths, $name)}) {
+    @content;
+  }
+}
+
+@mixin below($name) {
+  @media (max-width: calc(#{map.get($_widths, $name)} - 1px)) {
+    @content;
+  }
+}

@@ -1,0 +1,7 @@
+@for (i of items(); track i) {
+  <span
+    [class]="'item item--' + shape()"
+    [style.width]="lines() > 1 && i === lines() - 1 ? '60%' : width()"
+    [style.height]="height()">
+  </span>
+}

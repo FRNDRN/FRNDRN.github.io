@@ -1,0 +1,22 @@
+:host {
+  display: block;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 999;
+  padding: 8px 16px;
+  background: var(--mat-sys-primary-container);
+  color: var(--mat-sys-on-primary-container);
+  border-radius: 0 0 8px 8px;
+  font-weight: 500;
+  text-decoration: none;
+
+  &:focus-visible {
+    top: 0;
+    outline: 2px solid var(--mat-sys-primary);
+    outline-offset: 2px;
+  }
+}

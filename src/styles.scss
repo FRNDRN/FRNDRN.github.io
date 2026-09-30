@@ -75,3 +75,28 @@ body {
   font: var(--mat-sys-body-large);
   -webkit-font-smoothing: antialiased;
 }
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-color: var(--app-pcb-trace);
+  mask: url('/patterns/pcb-traces.svg') repeat 0 0 / 240px 240px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .app-reveal {
+      animation: app-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+  }
+}
+
+@keyframes app-reveal {
+  from { opacity: 0; translate: 0 24px; }
+  to { opacity: 1; translate: 0 0; }
+}
