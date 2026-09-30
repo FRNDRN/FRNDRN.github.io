@@ -1,0 +1,16 @@
+:host {
+  display: block;
+}
+
+.inner {
+  max-width: var(--app-content-width);
+  margin-inline: auto;
+  padding: clamp(64px, 8vw, 96px) var(--app-gutter);
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 40px;
+}

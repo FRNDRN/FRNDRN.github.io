@@ -1,0 +1,92 @@
+:host {
+  display: block;
+}
+
+.scope {
+  margin: 0;
+  padding: 20px;
+  border-radius: 32px;
+  background: var(--mat-sys-surface-container);
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  color: var(--mat-sys-on-surface-variant);
+  font-family: var(--app-font-mono);
+  font-size: 12px;
+}
+
+.ch {
+  color: var(--mat-sys-primary);
+}
+
+.screen {
+  aspect-ratio: 520 / 300;
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--app-scope-screen);
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.grid {
+  fill: none;
+  stroke: var(--app-scope-grid);
+  stroke-width: 1;
+}
+
+.axis {
+  fill: none;
+  stroke: var(--app-scope-axis);
+  stroke-width: 1;
+}
+
+// Kept as its own class so the trace can be animated in a later stage.
+.scope-trace {
+  fill: none;
+  stroke: var(--app-scope-trace);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.code-box {
+  fill: var(--mat-sys-primary-container);
+}
+
+.code-text {
+  fill: var(--mat-sys-on-primary-container);
+  font-family: var(--app-font-mono);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.axis-label {
+  fill: var(--app-copper);
+  font-family: var(--app-font-mono);
+  font-size: 11px;
+}
+
+.caption {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 16px 4px 4px;
+  color: var(--mat-sys-on-surface-variant);
+  font-size: 14px;
+}
+
+.pulse {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--mat-sys-primary);
+}

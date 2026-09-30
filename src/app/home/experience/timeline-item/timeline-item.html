@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="meta">
+    @if (item(); as it) {
+      <p class="date">{{ dateRange() }}</p>
+      <p class="place">{{ it.location }}</p>
+    } @else {
+      <app-skeleton class="date" width="120px" height="14px" />
+      <app-skeleton class="place" width="90px" height="13px" />
+    }
+  </div>
+
+  <div class="rail" aria-hidden="true">
+    <span class="dot" [class.dot--current]="isCurrent()"></span>
+    <span class="line"></span>
+  </div>
+
+  <article class="card">
+    @if (item(); as it) {
+      <div class="head">
+        <div>
+          <h3 class="role">{{ it.role }}</h3>
+          <p class="org">{{ it.organization }}{{ it.team ? ' · ' + it.team : '' }}</p>
+        </div>
+        @if (isCurrent()) {
+          <app-badge tone="tertiary">Current</app-badge>
+        }
+      </div>
+
+      <ul class="highlights">
+        @for (highlight of it.highlights; track $index) {
+          <li>{{ highlight }}</li>
+        }
+      </ul>
+
+      @if (it.moreHighlights?.length) {
+        <ul class="highlights more-list" [id]="moreId" [hidden]="!expanded()">
+          @for (highlight of it.moreHighlights ?? []; track $index) {
+            <li>{{ highlight }}</li>
+          }
+        </ul>
+      }
+
+      <app-tag-list class="stack" [tags]="it.stack" appearance="outlined" ariaLabel="Tech stack" />
+
+      @if (it.moreHighlights?.length) {
+        <button
+          matButton="text"
+          type="button"
+          class="more"
+          [attr.aria-expanded]="expanded()"
+          [attr.aria-controls]="moreId"
+          (click)="toggleResponsibilities()">
+          {{ expanded() ? 'Show less' : 'Show all responsibilities' }}
+          <mat-icon svgIcon="chevron-down" iconPositionEnd [class.flipped]="expanded()" />
+        </button>
+      }
+    } @else {
+      <div class="head">
+        <app-skeleton width="60%" height="24px" />
+      </div>
+      <app-skeleton class="org-skeleton" width="40%" height="17px" />
+      <app-skeleton [lines]="3" height="17px" />
+      <app-tag-list class="stack" appearance="outlined" />
+    }
+  </article>
+</div>

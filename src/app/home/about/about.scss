@@ -1,0 +1,48 @@
+@use '../../../styles/breakpoints' as bp;
+
+:host {
+  display: block;
+}
+
+.inner {
+  display: grid;
+  gap: 48px;
+  max-width: var(--app-content-width);
+  margin-inline: auto;
+  padding: clamp(64px, 8vw, 96px) var(--app-gutter);
+
+  @include bp.from(large) {
+    grid-template-columns: 380px 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+}
+
+.photo {
+  justify-self: center;
+}
+
+.paragraphs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.paragraph {
+  margin: 0;
+  color: var(--mat-sys-on-surface-variant);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+
+  @include bp.below(medium) {
+    grid-template-columns: 1fr;
+  }
+}

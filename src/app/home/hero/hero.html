@@ -1,0 +1,79 @@
+<section id="top" class="hero" aria-label="Introduction">
+  <div class="inner">
+    <div class="intro">
+      <p class="location">
+        <mat-icon svgIcon="location" />
+        @if (profile(); as p) {
+          <span>{{ p.location }}</span>
+        } @else {
+          <app-skeleton width="140px" height="16px" />
+        }
+      </p>
+
+      <p class="overline">// electronics × software</p>
+
+      <h1 class="name">
+        @if (profile(); as p) {
+          {{ p.name }}
+        } @else {
+          <app-skeleton width="min(460px, 90%)" height="0.9em" />
+        }
+      </h1>
+
+      @if (profile(); as p) {
+        <p class="role">{{ p.role }}</p>
+        <p class="tagline">{{ p.tagline }}</p>
+      } @else {
+        <app-skeleton class="role" width="min(320px, 70%)" height="26px" />
+        <app-skeleton class="tagline" [lines]="3" height="19px" />
+      }
+
+      <div class="actions">
+        <a matButton="filled" routerLink="/" fragment="projects">
+          View projects
+          <mat-icon svgIcon="arrow-right" iconPositionEnd />
+        </a>
+
+        @if (profile()?.links?.cv; as cv) {
+          <a matButton="tonal" [href]="cv" download>
+            Download CV
+            <mat-icon svgIcon="download" iconPositionEnd />
+          </a>
+        } @else {
+          <button matButton="tonal" type="button" disabled>
+            Download CV
+            <mat-icon svgIcon="download" iconPositionEnd />
+          </button>
+        }
+
+        <span class="sep" aria-hidden="true"></span>
+
+        <div class="socials">
+          @if (profile(); as p) {
+            <a class="social" matIconButton [href]="p.links.linkedin" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <mat-icon svgIcon="linkedin" />
+            </a>
+            <a class="social" matIconButton [href]="p.links.github" target="_blank" rel="noopener" aria-label="GitHub">
+              <mat-icon svgIcon="github" />
+            </a>
+            <a class="social" matIconButton [href]="'mailto:' + p.links.email" aria-label="Email">
+              <mat-icon svgIcon="mail" />
+            </a>
+          } @else {
+            <button class="social" matIconButton type="button" disabled aria-label="LinkedIn">
+              <mat-icon svgIcon="linkedin" />
+            </button>
+            <button class="social" matIconButton type="button" disabled aria-label="GitHub">
+              <mat-icon svgIcon="github" />
+            </button>
+            <button class="social" matIconButton type="button" disabled aria-label="Email">
+              <mat-icon svgIcon="mail" />
+            </button>
+          }
+        </div>
+      </div>
+    </div>
+
+    <app-oscilloscope class="scope" />
+  </div>
+</section>

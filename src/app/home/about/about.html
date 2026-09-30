@@ -1,0 +1,33 @@
+<section id="about" class="about" aria-labelledby="about-title">
+  <div class="inner">
+    <app-profile-photo class="photo" [photo]="profile()?.photo" />
+
+    <div class="body">
+      <app-section-header index="01" name="about" headingId="about-title" />
+
+      <div class="paragraphs">
+        @if (profile(); as p) {
+          @for (paragraph of p.about; track $index) {
+            <p class="paragraph">{{ paragraph }}</p>
+          }
+        } @else {
+          @for (i of placeholderParagraphs; track i) {
+            <app-skeleton class="paragraph" [lines]="3" height="17px" />
+          }
+        }
+      </div>
+
+      <div class="stats">
+        @if (profile(); as p) {
+          @for (stat of p.stats; track stat.label) {
+            <app-stat-card [stat]="stat" variant="about" />
+          }
+        } @else {
+          @for (i of placeholderStats; track i) {
+            <app-stat-card variant="about" />
+          }
+        }
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,138 @@
+@use '../../../../styles/breakpoints' as bp;
+
+:host {
+  display: block;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+
+  @include bp.from(large) {
+    grid-template-columns: 200px 40px 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+}
+
+.meta {
+  @include bp.from(large) {
+    padding-top: 6px;
+    text-align: right;
+  }
+}
+
+.date {
+  margin: 0 0 4px;
+  color: var(--mat-sys-on-surface);
+  font-family: var(--app-font-mono);
+  font-size: 14px;
+}
+
+.place {
+  margin: 0;
+  color: var(--mat-sys-on-surface-variant);
+  font-size: 13px;
+}
+
+.rail {
+  display: none;
+
+  @include bp.from(large) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 8px;
+  }
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--mat-sys-outline);
+  border-radius: 50%;
+  background: var(--mat-sys-surface);
+}
+
+.dot--current {
+  width: 16px;
+  height: 16px;
+  border: none;
+  background: var(--mat-sys-primary);
+  box-shadow: 0 0 0 6px var(--mat-sys-primary-container);
+}
+
+.line {
+  flex: 1;
+  width: 2px;
+  margin-top: 8px;
+  background: var(--mat-sys-outline-variant);
+}
+
+.card {
+  padding: 32px;
+  border-radius: 24px;
+  background: var(--mat-sys-surface-container-low);
+}
+
+.head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.role {
+  margin: 0 0 4px;
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.org {
+  margin: 0;
+  color: var(--mat-sys-primary);
+  font-size: 17px;
+}
+
+.org-skeleton {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.highlights {
+  margin: 0 0 16px;
+  padding-left: 20px;
+  color: var(--mat-sys-on-surface-variant);
+  font-size: 17px;
+  line-height: 1.55;
+
+  li {
+    margin-bottom: 6px;
+  }
+}
+
+.more-list {
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
+
+.stack {
+  display: block;
+  margin-bottom: 12px;
+}
+
+.more mat-icon {
+  transition: transform 150ms ease;
+}
+
+.more mat-icon.flipped {
+  transform: rotate(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .more mat-icon {
+    transition: none;
+  }
+}

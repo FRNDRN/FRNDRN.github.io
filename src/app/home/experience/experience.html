@@ -1,0 +1,17 @@
+<section id="experience" class="experience" aria-labelledby="experience-title">
+  <div class="inner">
+    <app-section-header index="02" name="experience" headingId="experience-title" />
+
+    <div class="timeline">
+      @if (items(); as list) {
+        @for (item of list; track item.id) {
+          <app-timeline-item [item]="item" />
+        }
+      } @else {
+        @for (i of placeholders; track i) {
+          <app-timeline-item />
+        }
+      }
+    </div>
+  </div>
+</section>

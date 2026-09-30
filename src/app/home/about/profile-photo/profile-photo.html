@@ -1,0 +1,30 @@
+<div class="photo">
+  <svg
+    class="shape"
+    viewBox="0 0 380 380"
+    focusable="false"
+    [attr.role]="photo() ? 'img' : null"
+    [attr.aria-label]="photo()?.alt"
+    [attr.aria-hidden]="photo() ? null : 'true'">
+    <defs>
+      <clipPath id="profileCookie">
+        <path [attr.d]="path" />
+      </clipPath>
+    </defs>
+    <path class="bg" [attr.d]="path" />
+    @if (photo(); as p) {
+      <image
+        [attr.href]="p.src"
+        width="380"
+        height="380"
+        preserveAspectRatio="xMidYMid slice"
+        clip-path="url(#profileCookie)" />
+    }
+  </svg>
+
+  @if (!photo()) {
+    <span class="placeholder" aria-hidden="true">
+      <mat-icon svgIcon="person" />
+    </span>
+  }
+</div>
