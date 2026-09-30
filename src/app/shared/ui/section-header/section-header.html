@@ -1,0 +1,13 @@
+<div class="header">
+  <div class="heading" [class.heading--on-primary]="tone() === 'on-primary-container'">
+    <p class="overline">{{ overline() }}</p>
+    <h2 class="title" [id]="headingId()">
+      @if (title(); as t) {
+        {{ t }}
+      } @else {
+        <app-skeleton width="min(320px, 70%)" height="0.9em" />
+      }
+    </h2>
+  </div>
+  <div class="slot"><ng-content /></div>
+</div>

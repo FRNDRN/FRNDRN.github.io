@@ -1,0 +1,13 @@
+@if (tags(); as list) {
+  <mat-chip-set [attr.aria-label]="ariaLabel()">
+    @for (tag of list; track tag) {
+      <mat-chip>{{ tag }}</mat-chip>
+    }
+  </mat-chip-set>
+} @else {
+  <div class="skeletons" aria-hidden="true">
+    @for (i of placeholders; track i) {
+      <app-skeleton shape="pill" width="72px" [height]="size() === 'small' ? '28px' : '32px'" />
+    }
+  </div>
+}

@@ -1,0 +1,61 @@
+@use '@angular/material' as mat;
+
+:host {
+  display: block;
+
+  @include mat.chips-overrides(
+    (
+      container-height: 32px,
+      container-shape-radius: 8px,
+      label-text-font: var(--app-font-mono),
+      label-text-size: 13px,
+      label-text-weight: 500,
+      outline-width: 1px,
+    )
+  );
+}
+
+:host(.tag-list--small) {
+  @include mat.chips-overrides(
+    (
+      container-height: 28px,
+      label-text-size: 12px,
+    )
+  );
+}
+
+:host(.tag-list--outlined) {
+  @include mat.chips-overrides(
+    (
+      elevated-container-color: transparent,
+      outline-color: var(--mat-sys-outline-variant),
+      label-text-color: var(--mat-sys-on-surface-variant),
+    )
+  );
+}
+
+:host(.tag-list--tonal) {
+  @include mat.chips-overrides(
+    (
+      elevated-container-color: var(--mat-sys-tertiary-container),
+      outline-width: 0,
+      label-text-color: var(--mat-sys-on-tertiary-container),
+    )
+  );
+}
+
+:host(.tag-list--filled-soft) {
+  @include mat.chips-overrides(
+    (
+      elevated-container-color: var(--mat-sys-surface-container-high),
+      outline-width: 0,
+      label-text-color: var(--mat-sys-on-surface),
+    )
+  );
+}
+
+.skeletons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}

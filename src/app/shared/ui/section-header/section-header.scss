@@ -1,0 +1,35 @@
+:host {
+  display: block;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px 24px;
+}
+
+.overline {
+  margin: 0 0 8px;
+  color: var(--mat-sys-tertiary);
+  font-family: var(--app-font-mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+}
+
+.heading--on-primary .overline {
+  color: var(--mat-sys-on-primary-container);
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+}
+
+.slot:empty {
+  display: none;
+}
