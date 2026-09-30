@@ -1,0 +1,20 @@
+@use '@angular/material' as mat;
+
+:host {
+  display: block;
+
+  @include mat.chips-overrides(
+    (
+      container-height: 40px,
+      container-shape-radius: 8px,
+      outline-color: var(--mat-sys-outline),
+      outline-width: 1px,
+      elevated-container-color: transparent,
+      label-text-color: var(--mat-sys-on-surface-variant),
+      label-text-weight: 500,
+      elevated-selected-container-color: var(--mat-sys-secondary-container),
+      selected-label-text-color: var(--mat-sys-on-secondary-container),
+      flat-selected-outline-width: 0,
+    )
+  );
+}

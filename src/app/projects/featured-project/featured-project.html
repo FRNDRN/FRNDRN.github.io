@@ -1,0 +1,58 @@
+<article class="featured">
+  <div class="viewer">
+    <div class="viewer-box" aria-hidden="true">
+      <mat-icon svgIcon="photo" />
+    </div>
+    @if (project(); as p) {
+      <p class="fig">FIG. 01 — {{ p.title }}</p>
+    } @else {
+      <app-skeleton class="fig" width="220px" height="12px" />
+    }
+  </div>
+
+  <div class="body">
+    @if (project(); as p) {
+      <div class="badges">
+        <app-badge tone="tertiary">Featured</app-badge>
+        <app-badge tone="outlined">{{ p.context }}</app-badge>
+      </div>
+      <h3 class="title">{{ p.title }}</h3>
+      <p class="summary">{{ p.summary }}</p>
+      <div class="metrics">
+        @for (metric of p.metrics; track metric.label) {
+          <app-stat-card [stat]="metric" variant="metric" />
+        }
+      </div>
+      <app-tag-list class="stack" [tags]="p.stack" appearance="outlined" ariaLabel="Tech stack" />
+      <div class="actions">
+        @if (p.hasCaseStudy) {
+          <button matButton="filled" type="button" disabled>Read case study</button>
+        }
+        @for (link of p.links; track link.url) {
+          <a
+            matButton="outlined"
+            [href]="link.url"
+            target="_blank"
+            rel="noopener"
+            [attr.aria-label]="link.label + ' (opens in a new tab)'">
+            {{ link.label }}
+            <mat-icon svgIcon="external-link" iconPositionEnd />
+          </a>
+        }
+      </div>
+    } @else {
+      <div class="badges">
+        <app-skeleton shape="pill" width="92px" height="28px" />
+        <app-skeleton shape="pill" width="150px" height="28px" />
+      </div>
+      <app-skeleton class="title" width="70%" height="36px" />
+      <app-skeleton [lines]="2" height="17px" />
+      <div class="metrics">
+        @for (i of placeholderMetrics; track i) {
+          <app-stat-card variant="metric" />
+        }
+      </div>
+      <app-tag-list class="stack" appearance="outlined" />
+    }
+  </div>
+</article>

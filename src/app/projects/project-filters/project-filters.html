@@ -1,0 +1,9 @@
+<mat-chip-listbox
+  class="filters"
+  aria-label="Filter projects"
+  [value]="category()"
+  (change)="onChange($event)">
+  @for (option of options; track option.value) {
+    <mat-chip-option [value]="option.value">{{ option.label }}</mat-chip-option>
+  }
+</mat-chip-listbox>

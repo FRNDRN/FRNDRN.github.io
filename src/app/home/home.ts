@@ -4,10 +4,11 @@ import { TraceDivider } from '../shared/ui/trace-divider/trace-divider';
 import { Hero } from './hero/hero';
 import { About } from './about/about';
 import { Experience } from './experience/experience';
+import { ProjectsSection } from './projects-section/projects-section';
 
 @Component({
   selector: 'app-home',
-  imports: [SectionAnchor, TraceDivider, Hero, About, Experience],
+  imports: [SectionAnchor, TraceDivider, Hero, About, Experience, ProjectsSection],
   styleUrl: './home.scss',
   templateUrl: './home.html',
 })

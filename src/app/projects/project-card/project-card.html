@@ -1,0 +1,38 @@
+<article class="card">
+  <div class="media">
+    @if (project()?.image; as img) {
+      <img [ngSrc]="img.src" [alt]="img.alt" fill sizes="(min-width: 840px) 50vw, 100vw" />
+    } @else {
+      <div class="media-box" aria-hidden="true"><mat-icon svgIcon="photo" /></div>
+    }
+  </div>
+
+  @if (project(); as p) {
+    <div class="top">
+      <p class="categories">{{ categoryLabel(p) }}</p>
+      @if (p.status === 'in-progress') {
+        <app-badge tone="secondary" [pulse]="true">In progress</app-badge>
+      }
+    </div>
+    <h3 class="title">{{ p.title }}</h3>
+    <p class="summary">{{ p.summary }}</p>
+    @if (p.highlight; as highlight) {
+      <p class="highlight">{{ highlight }}</p>
+    }
+    <app-tag-list
+      class="stack"
+      [tags]="p.stack"
+      size="small"
+      appearance="outlined"
+      ariaLabel="Tech stack" />
+    <p class="origin">{{ p.origin }}</p>
+  } @else {
+    <div class="top">
+      <app-skeleton width="120px" height="12px" />
+    </div>
+    <app-skeleton class="title" width="70%" height="24px" />
+    <app-skeleton [lines]="2" height="16px" />
+    <app-tag-list class="stack" size="small" appearance="outlined" />
+    <app-skeleton class="origin" width="140px" height="14px" />
+  }
+</article>

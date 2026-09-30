@@ -1,0 +1,39 @@
+<section id="projects" class="projects" aria-labelledby="projects-title">
+  <div class="inner">
+    <app-section-header index="03" name="projects" headingId="projects-title">
+      <app-project-filters [(category)]="category" />
+    </app-section-header>
+
+    @if (!projects()) {
+      <app-skeleton class="subtitle" width="min(520px, 80%)" height="18px" />
+    }
+
+    <div class="content">
+      @if (projects()) {
+        @if (featured(); as f) {
+          <app-featured-project [project]="f" />
+        }
+        <div class="grid">
+          @for (project of shown(); track project.slug) {
+            <app-project-card [project]="project" />
+          }
+          <app-next-project-slot />
+        </div>
+        @if (hasMore()) {
+          <a matButton="text" class="see-all" routerLink="/projects">
+            See all projects
+            <mat-icon svgIcon="arrow-right" iconPositionEnd />
+          </a>
+        }
+      } @else {
+        <app-featured-project />
+        <div class="grid">
+          @for (i of cardPlaceholders; track i) {
+            <app-project-card />
+          }
+          <app-next-project-slot />
+        </div>
+      }
+    </div>
+  </div>
+</section>
