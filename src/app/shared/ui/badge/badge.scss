@@ -31,3 +31,21 @@
   border-radius: 50%;
   background: var(--mat-sys-primary);
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  .dot {
+    animation: badge-pulse 2s ease-in-out infinite;
+  }
+}
+
+@keyframes badge-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.6;
+  }
+}

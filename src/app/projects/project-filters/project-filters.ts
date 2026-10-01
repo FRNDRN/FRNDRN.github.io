@@ -1,12 +1,8 @@
-import { Component, model, viewChild } from '@angular/core';
+import { Component, inject, model, viewChild } from '@angular/core';
 import { MatChipListbox, MatChipListboxChange, MatChipsModule } from '@angular/material/chips';
-import { PROJECT_CATEGORY_LABELS, ProjectCategory } from '../../data/project';
+import { PROJECT_CATEGORIES } from '../../data/project';
+import { I18n } from '../../shared/i18n/i18n';
 import { CategoryFilter } from '../filter-projects';
-
-interface FilterOption {
-  readonly value: CategoryFilter;
-  readonly label: string;
-}
 
 @Component({
   selector: 'app-project-filters',
@@ -15,16 +11,13 @@ interface FilterOption {
   templateUrl: './project-filters.html',
 })
 export class ProjectFilters {
+  protected readonly strings = inject(I18n).strings;
+
   readonly category = model<CategoryFilter>('all');
 
   private readonly listbox = viewChild.required(MatChipListbox);
 
-  protected readonly options: readonly FilterOption[] = [
-    { value: 'all', label: 'All' },
-    ...(Object.entries(PROJECT_CATEGORY_LABELS) as [ProjectCategory, string][]).map(
-      ([value, label]) => ({ value, label }),
-    ),
-  ];
+  protected readonly categories = PROJECT_CATEGORIES;
 
   protected onChange(event: MatChipListboxChange): void {
     const value = event.value as CategoryFilter | null;

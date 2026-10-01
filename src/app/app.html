@@ -1,5 +1,5 @@
-<a class="skip-link" href="#content">Skip to content</a>
-<app-top-app-bar />
+<a class="skip-link" href="#content">{{ strings().common.skipToContent }}</a>
+<app-top-app-bar [name]="profile().name" />
 <main id="content" tabindex="-1"><router-outlet /></main>
-<app-footer />
+<app-footer [name]="profile().name" />
 <app-bottom-nav />

@@ -90,3 +90,35 @@
   border-radius: 50%;
   background: var(--mat-sys-primary);
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  .scope-trace {
+    animation: scope-glow 3s ease-in-out infinite;
+  }
+
+  .pulse {
+    animation: scope-pulse 2s ease-in-out infinite;
+  }
+}
+
+@keyframes scope-glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 1px var(--app-scope-trace));
+  }
+  50% {
+    filter: drop-shadow(0 0 5px var(--app-scope-trace));
+  }
+}
+
+@keyframes scope-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.6;
+  }
+}

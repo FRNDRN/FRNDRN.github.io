@@ -13,7 +13,7 @@
   <div class="body">
     @if (project(); as p) {
       <div class="badges">
-        <app-badge tone="tertiary">Featured</app-badge>
+        <app-badge tone="tertiary">{{ strings().projects.featured }}</app-badge>
         <app-badge tone="outlined">{{ p.context }}</app-badge>
       </div>
       <h3 class="title">{{ p.title }}</h3>
@@ -23,10 +23,16 @@
           <app-stat-card [stat]="metric" variant="metric" />
         }
       </div>
-      <app-tag-list class="stack" [tags]="p.stack" appearance="outlined" ariaLabel="Tech stack" />
+      <app-tag-list
+        class="stack"
+        [tags]="p.stack"
+        appearance="outlined"
+        [ariaLabel]="strings().projects.stackAria" />
       <div class="actions">
         @if (p.hasCaseStudy) {
-          <button matButton="filled" type="button" disabled>Read case study</button>
+          <button matButton="filled" type="button" disabled>
+            {{ strings().projects.readCaseStudy }}
+          </button>
         }
         @for (link of p.links; track link.url) {
           <a
@@ -34,7 +40,7 @@
             [href]="link.url"
             target="_blank"
             rel="noopener"
-            [attr.aria-label]="link.label + ' (opens in a new tab)'">
+            [attr.aria-label]="link.label + ' ' + strings().common.opensInNewTab">
             {{ link.label }}
             <mat-icon svgIcon="external-link" iconPositionEnd />
           </a>

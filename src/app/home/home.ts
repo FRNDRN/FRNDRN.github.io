@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Portfolio } from '../data/portfolio';
 import { SectionAnchor } from '../layout/section-anchor';
 import { TraceDivider } from '../shared/ui/trace-divider/trace-divider';
 import { Hero } from './hero/hero';
@@ -27,4 +28,6 @@ import { Contact } from './contact/contact';
   styleUrl: './home.scss',
   templateUrl: './home.html',
 })
-export class Home {}
+export class Home {
+  protected readonly portfolio = inject(Portfolio);
+}

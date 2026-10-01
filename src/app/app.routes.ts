@@ -1,15 +1,14 @@
 import { Routes } from '@angular/router';
 
+// Document titles are set reactively (and localised) from App, so no static titles here.
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./home/home').then(m => m.Home),
-    title: 'Franco Andrian — Electronics & Software Engineer',
+    loadComponent: () => import('./home/home').then((m) => m.Home),
   },
   {
     path: 'projects',
-    loadComponent: () => import('./projects/projects-page/projects-page').then(m => m.ProjectsPage),
-    title: 'Projects — Franco Andrian',
+    loadComponent: () => import('./projects/projects-page/projects-page').then((m) => m.ProjectsPage),
   },
   {
     path: '**',

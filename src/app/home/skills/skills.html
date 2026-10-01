@@ -1,6 +1,10 @@
 <section id="skills" class="skills" aria-labelledby="skills-title">
   <div class="inner">
-    <app-section-header index="04" name="skills" headingId="skills-title" />
+    <app-section-header
+      index="04"
+      [name]="strings().sections.skills.overline"
+      [title]="strings().sections.skills.title"
+      headingId="skills-title" />
 
     @if (groups()) {
       <div class="row row--large">

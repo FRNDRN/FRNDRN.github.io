@@ -16,7 +16,7 @@
         [href]="link.url"
         target="_blank"
         rel="noopener"
-        [attr.aria-label]="link.label + ' (opens in a new tab)'">
+        [attr.aria-label]="link.label + ' ' + strings().common.opensInNewTab">
         {{ link.label }}
         <mat-icon svgIcon="external-link" iconPositionEnd />
       </a>

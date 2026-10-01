@@ -2,12 +2,13 @@ import { Stat } from './stat';
 
 export type ProjectCategory = 'embedded' | 'web' | 'machine-learning' | 'robotics';
 
-export const PROJECT_CATEGORY_LABELS: Record<ProjectCategory, string> = {
-  embedded: 'Embedded',
-  web: 'Web',
-  'machine-learning': 'Machine Learning',
-  robotics: 'Robotics',
-};
+// Order of the filter chips. Display labels are localised in the i18n string table.
+export const PROJECT_CATEGORIES: readonly ProjectCategory[] = [
+  'embedded',
+  'web',
+  'machine-learning',
+  'robotics',
+];
 
 export type ProjectStatus = 'completed' | 'in-progress';
 

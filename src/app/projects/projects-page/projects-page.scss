@@ -39,7 +39,11 @@
 }
 
 .subtitle {
-  display: block;
+  max-width: 640px;
+  margin: 0;
+  color: var(--mat-sys-on-surface-variant);
+  font-size: 17px;
+  line-height: 1.5;
 }
 
 .filters {

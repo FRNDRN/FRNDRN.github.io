@@ -1,6 +1,7 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import { MatChipsModule } from '@angular/material/chips';
 import { SkillGroup } from '../../../data/skill';
+import { I18n } from '../../../shared/i18n/i18n';
 import { Skeleton } from '../../../shared/ui/skeleton/skeleton';
 
 @Component({
@@ -16,6 +17,8 @@ import { Skeleton } from '../../../shared/ui/skeleton/skeleton';
   },
 })
 export class SkillGroupCard {
+  protected readonly strings = inject(I18n).strings;
+
   readonly group = input<SkillGroup | undefined>();
   // Drives the skeleton layout (large vs outlined) before data arrives.
   readonly fallbackTone = input<SkillGroup['tone']>('primary');

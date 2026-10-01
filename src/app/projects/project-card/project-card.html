@@ -11,7 +11,7 @@
     <div class="top">
       <p class="categories">{{ categoryLabel(p) }}</p>
       @if (p.status === 'in-progress') {
-        <app-badge tone="secondary" [pulse]="true">In progress</app-badge>
+        <app-badge tone="secondary" [pulse]="true">{{ strings().projects.inProgress }}</app-badge>
       }
     </div>
     <h3 class="title">{{ p.title }}</h3>
@@ -24,7 +24,7 @@
       [tags]="p.stack"
       size="small"
       appearance="outlined"
-      ariaLabel="Tech stack" />
+      [ariaLabel]="strings().projects.stackAria" />
     <p class="origin">{{ p.origin }}</p>
   } @else {
     <div class="top">

@@ -1,4 +1,4 @@
-import { PROJECT_CATEGORY_LABELS, Project, ProjectCategory } from '../data/project';
+import { PROJECT_CATEGORIES, Project, ProjectCategory } from '../data/project';
 
 export type CategoryFilter = ProjectCategory | 'all';
 
@@ -7,10 +7,7 @@ export function parseCategory(value: string | null | undefined): CategoryFilter 
   if (value === 'all') {
     return 'all';
   }
-  if (value != null && value in PROJECT_CATEGORY_LABELS) {
-    return value as ProjectCategory;
-  }
-  return 'all';
+  return PROJECT_CATEGORIES.includes(value as ProjectCategory) ? (value as ProjectCategory) : 'all';
 }
 
 /** Returns the projects in the given category (all of them for 'all'), preserving order. */

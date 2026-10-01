@@ -33,6 +33,24 @@
   background: var(--mat-sys-primary);
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  .dot {
+    animation: now-pulse 2s ease-in-out infinite;
+  }
+}
+
+@keyframes now-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.6;
+  }
+}
+
 .item-title {
   margin: 0 0 6px;
   font-size: 18px;

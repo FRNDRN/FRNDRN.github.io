@@ -1,6 +1,6 @@
 <div class="inner">
-  <a class="brand" routerLink="/" aria-label="Home">
-    <span class="monogram" aria-hidden="true">FA</span>
+  <a class="brand" routerLink="/" [attr.aria-label]="strings().common.home">
+    <span class="monogram" aria-hidden="true">{{ monogram() }}</span>
     @if (name(); as n) {
       <span class="name">{{ n }}</span>
     } @else {
@@ -8,7 +8,7 @@
     }
   </a>
 
-  <nav class="sections" aria-label="Sections">
+  <nav class="sections" [attr.aria-label]="strings().nav.sectionsAria">
     @for (item of items; track item.id) {
       <a
         class="pill"
@@ -16,10 +16,13 @@
         [fragment]="item.id"
         [class.pill--active]="isActive(item.id)"
         [attr.aria-current]="ariaCurrent(item.id)">
-        {{ item.label }}
+        {{ strings().nav[item.id] }}
       </a>
     }
   </nav>
 
-  <app-theme-toggle />
+  <div class="controls">
+    <app-language-toggle />
+    <app-theme-toggle />
+  </div>
 </div>

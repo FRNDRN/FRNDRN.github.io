@@ -98,7 +98,9 @@
   }
 }
 
-app-theme-toggle {
+.controls {
+  display: inline-flex;
+  gap: 8px;
   justify-self: end;
 }
 

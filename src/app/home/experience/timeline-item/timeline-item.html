@@ -22,7 +22,7 @@
           <p class="org">{{ it.organization }}{{ it.team ? ' · ' + it.team : '' }}</p>
         </div>
         @if (isCurrent()) {
-          <app-badge tone="tertiary">Current</app-badge>
+          <app-badge tone="tertiary">{{ strings().experience.current }}</app-badge>
         }
       </div>
 
@@ -40,7 +40,11 @@
         </ul>
       }
 
-      <app-tag-list class="stack" [tags]="it.stack" appearance="outlined" ariaLabel="Tech stack" />
+      <app-tag-list
+        class="stack"
+        [tags]="it.stack"
+        appearance="outlined"
+        [ariaLabel]="strings().experience.stackAria" />
 
       @if (it.moreHighlights?.length) {
         <button
@@ -50,7 +54,7 @@
           [attr.aria-expanded]="expanded()"
           [attr.aria-controls]="moreId"
           (click)="toggleResponsibilities()">
-          {{ expanded() ? 'Show less' : 'Show all responsibilities' }}
+          {{ expanded() ? strings().experience.showLess : strings().experience.showAll }}
           <mat-icon svgIcon="chevron-down" iconPositionEnd [class.flipped]="expanded()" />
         </button>
       }

@@ -1,9 +1,9 @@
 <div class="page">
-  <a class="back" routerLink="/">← Home</a>
+  <a class="back" routerLink="/">{{ strings().projects.backHome }}</a>
 
   <header class="head">
-    <h1 class="title">Projects</h1>
-    <app-skeleton class="subtitle" width="min(560px, 80%)" height="18px" />
+    <h1 class="title">{{ strings().projects.pageTitle }}</h1>
+    <p class="subtitle">{{ strings().projects.pageSubtitle }}</p>
   </header>
 
   <app-project-filters
@@ -12,24 +12,14 @@
     (categoryChange)="onCategoryChange($event)" />
 
   <div class="content">
-    @if (projects()) {
-      @if (featured(); as f) {
-        <app-featured-project [project]="f" />
-      }
-      <div class="grid">
-        @for (project of others(); track project.slug) {
-          <app-project-card [project]="project" />
-        }
-        <app-next-project-slot />
-      </div>
-    } @else {
-      <app-featured-project />
-      <div class="grid">
-        @for (i of cardPlaceholders; track i) {
-          <app-project-card />
-        }
-        <app-next-project-slot />
-      </div>
+    @if (featured(); as f) {
+      <app-featured-project [project]="f" />
     }
+    <div class="grid">
+      @for (project of others(); track project.slug) {
+        <app-project-card [project]="project" />
+      }
+      <app-next-project-slot />
+    </div>
   </div>
 </div>

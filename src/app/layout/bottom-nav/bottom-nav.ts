@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { ActiveSection } from '../active-section';
 import { BOTTOM_NAV_ITEMS, NavItem, SectionId } from '../navigation';
+import { I18n } from '../../shared/i18n/i18n';
 
 @Component({
   selector: 'app-bottom-nav',
@@ -12,6 +13,7 @@ import { BOTTOM_NAV_ITEMS, NavItem, SectionId } from '../navigation';
 })
 export class BottomNav {
   private readonly activeSection = inject(ActiveSection);
+  protected readonly strings = inject(I18n).strings;
 
   protected readonly items = BOTTOM_NAV_ITEMS;
 

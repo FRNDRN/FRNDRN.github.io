@@ -1,9 +1,10 @@
 <mat-chip-listbox
   class="filters"
-  aria-label="Filter projects"
+  [attr.aria-label]="strings().projects.filterAria"
   [value]="category()"
   (change)="onChange($event)">
-  @for (option of options; track option.value) {
-    <mat-chip-option [value]="option.value">{{ option.label }}</mat-chip-option>
+  <mat-chip-option value="all">{{ strings().projects.all }}</mat-chip-option>
+  @for (category of categories; track category) {
+    <mat-chip-option [value]="category">{{ strings().projects.categories[category] }}</mat-chip-option>
   }
 </mat-chip-listbox>

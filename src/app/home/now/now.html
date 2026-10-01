@@ -3,9 +3,9 @@
     <div class="card">
       <app-section-header
         class="heading"
-        name="now"
-        headingId="now-title"
-        title="What I'm working on" />
+        [name]="strings().sections.now.overline"
+        [title]="strings().sections.now.title"
+        headingId="now-title" />
 
       @if (items(); as list) {
         @for (item of list; track item.title) {

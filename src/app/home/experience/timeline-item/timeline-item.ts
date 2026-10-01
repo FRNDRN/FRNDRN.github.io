@@ -1,19 +1,13 @@
-import { Component, computed, input, signal } from '@angular/core';
+import { Component, computed, inject, input, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Experience as ExperienceItem } from '../../../data/experience';
+import { I18n } from '../../../shared/i18n/i18n';
 import { Badge } from '../../../shared/ui/badge/badge';
 import { Skeleton } from '../../../shared/ui/skeleton/skeleton';
 import { TagList } from '../../../shared/ui/tag-list/tag-list';
 
 let uid = 0;
-
-const MONTH_FORMAT = new Intl.DateTimeFormat('en', { month: 'short', year: 'numeric' });
-
-function formatMonth(value: string): string {
-  const [year, month] = value.split('-').map(Number);
-  return MONTH_FORMAT.format(new Date(year, (month || 1) - 1, 1));
-}
 
 @Component({
   selector: 'app-timeline-item',
@@ -22,6 +16,9 @@ function formatMonth(value: string): string {
   templateUrl: './timeline-item.html',
 })
 export class TimelineItem {
+  private readonly i18n = inject(I18n);
+  protected readonly strings = this.i18n.strings;
+
   readonly item = input<ExperienceItem | undefined>();
 
   protected readonly moreId = `experience-more-${uid++}`;
@@ -39,8 +36,16 @@ export class TimelineItem {
     if (!it) {
       return '';
     }
-    const end = it.end ? formatMonth(it.end) : 'Present';
-    return `${formatMonth(it.start)} — ${end}`;
+    const formatter = new Intl.DateTimeFormat(this.i18n.locale(), {
+      month: 'short',
+      year: 'numeric',
+    });
+    const format = (value: string): string => {
+      const [year, month] = value.split('-').map(Number);
+      return formatter.format(new Date(year, (month || 1) - 1, 1));
+    };
+    const end = it.end ? format(it.end) : this.strings().experience.present;
+    return `${format(it.start)} — ${end}`;
   });
 
   protected toggleResponsibilities(): void {

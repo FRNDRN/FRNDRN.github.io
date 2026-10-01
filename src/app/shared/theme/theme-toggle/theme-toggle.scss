@@ -22,4 +22,12 @@
 .toggle {
   background: var(--mat-sys-surface-container-high);
   border-radius: 50%;
+
+  // Force the glyph to the intended size and keep it centred within the circle.
+  mat-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    line-height: 20px;
+  }
 }

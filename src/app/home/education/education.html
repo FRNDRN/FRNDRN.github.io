@@ -1,6 +1,10 @@
 <section id="education" class="education" aria-labelledby="education-title">
   <div class="inner">
-    <app-section-header index="05" name="education" headingId="education-title" />
+    <app-section-header
+      index="05"
+      [name]="strings().sections.education.overline"
+      [title]="strings().sections.education.title"
+      headingId="education-title" />
 
     <div class="grid">
       @if (items(); as list) {

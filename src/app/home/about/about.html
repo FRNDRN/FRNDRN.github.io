@@ -3,7 +3,11 @@
     <app-profile-photo class="photo" [photo]="profile()?.photo" />
 
     <div class="body">
-      <app-section-header index="01" name="about" headingId="about-title" />
+      <app-section-header
+        index="01"
+        [name]="strings().sections.about.overline"
+        [title]="strings().sections.about.title"
+        headingId="about-title" />
 
       <div class="paragraphs">
         @if (profile(); as p) {

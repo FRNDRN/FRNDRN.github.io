@@ -4,11 +4,12 @@
       <app-section-header
         class="header"
         index="06"
-        name="contact"
+        [name]="strings().sections.contact.overline"
+        [title]="strings().sections.contact.title"
         headingId="contact-title"
         tone="on-primary-container" />
 
-      <app-skeleton class="lead" [lines]="2" height="19px" />
+      <p class="lead">{{ strings().sections.contact.lead }}</p>
 
       <ul class="links">
         @if (profile(); as p) {
@@ -23,9 +24,9 @@
               [href]="p.links.linkedin"
               target="_blank"
               rel="noopener"
-              aria-label="LinkedIn (opens in a new tab)">
+              [attr.aria-label]="strings().hero.linkedin + ' ' + strings().common.opensInNewTab">
               <mat-icon svgIcon="linkedin" />
-              <span>LinkedIn</span>
+              <span>{{ strings().hero.linkedin }}</span>
             </a>
           </li>
           <li>
@@ -33,9 +34,9 @@
               [href]="p.links.github"
               target="_blank"
               rel="noopener"
-              aria-label="GitHub (opens in a new tab)">
+              [attr.aria-label]="strings().hero.github + ' ' + strings().common.opensInNewTab">
               <mat-icon svgIcon="github" />
-              <span>GitHub</span>
+              <span>{{ strings().hero.github }}</span>
             </a>
           </li>
         } @else {
@@ -49,7 +50,9 @@
       </ul>
 
       @if (profile()?.links?.cv; as cv) {
-        <a class="cv" matButton="filled" [href]="cv" download>Download CV (PDF)</a>
+        <a class="cv" matButton="filled" [href]="cv" download>
+          {{ strings().contact.downloadCvPdf }}
+        </a>
       }
     </div>
   </div>

@@ -7,7 +7,7 @@
     @if (g.subtitle; as subtitle) {
       <p class="subtitle">{{ subtitle }}</p>
     }
-    <mat-chip-set class="chips" aria-label="Skills">
+    <mat-chip-set class="chips" [attr.aria-label]="strings().nav.skills">
       @for (item of g.items; track item) {
         <mat-chip class="chip">{{ item }}</mat-chip>
       }

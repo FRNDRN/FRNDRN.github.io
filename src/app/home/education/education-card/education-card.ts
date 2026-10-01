@@ -1,8 +1,9 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { EducationItem } from '../../../data/education';
 import { IconName } from '../../../shared/icons/icons';
+import { I18n } from '../../../shared/i18n/i18n';
 import { Skeleton } from '../../../shared/ui/skeleton/skeleton';
 
 @Component({
@@ -15,6 +16,8 @@ import { Skeleton } from '../../../shared/ui/skeleton/skeleton';
   },
 })
 export class EducationCard {
+  protected readonly strings = inject(I18n).strings;
+
   readonly item = input<EducationItem | undefined>();
 
   protected readonly icon = computed<IconName>(() =>

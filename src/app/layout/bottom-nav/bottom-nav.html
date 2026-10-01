@@ -1,4 +1,4 @@
-<nav class="nav" aria-label="Primary">
+<nav class="nav" [attr.aria-label]="strings().nav.primaryAria">
   @for (item of items; track item.id) {
     <a
       class="dest"
@@ -9,7 +9,7 @@
       <span class="indicator" aria-hidden="true">
         <mat-icon [svgIcon]="item.icon" />
       </span>
-      <span class="label">{{ item.label }}</span>
+      <span class="label">{{ strings().nav[item.id] }}</span>
     </a>
   }
 </nav>

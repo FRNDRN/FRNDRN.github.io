@@ -1,12 +1,15 @@
-<app-hero />
+<app-hero [profile]="portfolio.profile()" />
 <app-trace-divider [variant]="0" />
-<app-about class="app-reveal" appSectionAnchor="about" />
+<app-about class="app-reveal" appSectionAnchor="about" [profile]="portfolio.profile()" />
 <app-trace-divider [variant]="1" />
-<app-experience class="app-reveal" appSectionAnchor="experience" />
+<app-experience class="app-reveal" appSectionAnchor="experience" [items]="portfolio.experiences()" />
 <app-trace-divider [variant]="2" />
-<app-projects-section class="app-reveal" appSectionAnchor="projects" />
+<app-projects-section
+  class="app-reveal"
+  appSectionAnchor="projects"
+  [projects]="portfolio.projects()" />
 <app-trace-divider [variant]="3" />
-<app-skills class="app-reveal" appSectionAnchor="skills" />
-<app-education class="app-reveal" appSectionAnchor="education" />
-<app-now class="app-reveal" appSectionAnchor="now" />
-<app-contact class="app-reveal" appSectionAnchor="contact" />
+<app-skills class="app-reveal" appSectionAnchor="skills" [groups]="portfolio.skills()" />
+<app-education class="app-reveal" appSectionAnchor="education" [items]="portfolio.education()" />
+<app-now class="app-reveal" appSectionAnchor="now" [items]="portfolio.now()" />
+<app-contact class="app-reveal" appSectionAnchor="contact" [profile]="portfolio.profile()" />

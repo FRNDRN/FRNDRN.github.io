@@ -1,12 +1,14 @@
 <section id="projects" class="projects" aria-labelledby="projects-title">
   <div class="inner">
-    <app-section-header index="03" name="projects" headingId="projects-title">
+    <app-section-header
+      index="03"
+      [name]="strings().sections.projects.overline"
+      [title]="strings().sections.projects.title"
+      headingId="projects-title">
       <app-project-filters [(category)]="category" />
     </app-section-header>
 
-    @if (!projects()) {
-      <app-skeleton class="subtitle" width="min(520px, 80%)" height="18px" />
-    }
+    <p class="subtitle">{{ strings().sections.projects.subtitle }}</p>
 
     <div class="content">
       @if (projects()) {
@@ -21,7 +23,7 @@
         </div>
         @if (hasMore()) {
           <a matButton="text" class="see-all" routerLink="/projects">
-            See all projects
+            {{ strings().projects.seeAll }}
             <mat-icon svgIcon="arrow-right" iconPositionEnd />
           </a>
         }
