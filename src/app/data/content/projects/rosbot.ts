@@ -17,7 +17,13 @@ export function rosbot(t: Translate): Project {
     metrics: [],
     highlight: null,
     stack: ['ROS 2', 'Docker'],
-    image: null,
+    image: {
+      src: '/images/projects/rosbot.svg',
+      alt: t(
+        'Render of the planned four-wheel chassis: rear drive motors, Ackermann steering, 2D lidar and camera.',
+        'Render del chasis de cuatro ruedas planificado: motores traseros, dirección Ackermann, lidar 2D y cámara.',
+      ),
+    },
     caption: null,
     hasCaseStudy: false,
     links: [],

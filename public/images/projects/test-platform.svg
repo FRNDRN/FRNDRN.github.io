@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -42 1240 880" role="img" aria-labelledby="t">
+  <title id="t">Test platform architecture: desktop app, C++ REST server, power sources, transfer switches, harmonics and flicker analyzers and DAQ devices</title>
+  <defs>
+    <marker id="head" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#b8733a"/>
+    </marker>
+    <style>
+      .card { fill: #e9f3f0; stroke: #9cc9c0; stroke-width: 2; }
+      .device { fill: #f3efe9; stroke: #d6bfa5; stroke-width: 2; }
+      .label { font: 600 19px ui-monospace, 'Roboto Mono', Consolas, monospace; letter-spacing: 0.08em; fill: #006b5f; }
+      .title { font: 600 40px system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #10302b; }
+      .sub { font: 400 25px system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #44544f; }
+      .dtitle { font: 600 27px system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #3b2410; }
+      .tag { font: 600 20px ui-monospace, 'Roboto Mono', Consolas, monospace; letter-spacing: 0.06em; fill: #9a5a24; }
+      .wire { stroke: #b8733a; stroke-width: 4; fill: none; }
+      .pill { fill: #f6e6d6; stroke: #d6a676; stroke-width: 2; }
+      .pilltext { font: 600 20px ui-monospace, 'Roboto Mono', Consolas, monospace; fill: #7a4213; letter-spacing: 0.04em; }
+      .icon { fill: none; stroke: #006b5f; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .dicon { fill: none; stroke: #9a5a24; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <!-- Desktop app -->
+  <rect class="card" x="20" y="240" width="330" height="400" rx="32"/>
+  <g class="icon" transform="translate(56 284)">
+    <rect x="0" y="0" width="100" height="74" rx="10"/>
+    <line x1="0" y1="20" x2="100" y2="20"/>
+    <polyline points="14,60 34,42 50,52 70,30 86,38"/>
+  </g>
+  <text class="label" x="56" y="410">DESKTOP APP</text>
+  <text class="title" x="56" y="462">Angular +</text>
+  <text class="title" x="56" y="508">Electron</text>
+  <text class="sub" x="56" y="558">Test setup, live plots</text>
+  <text class="sub" x="56" y="592">and reports</text>
+
+  <!-- App <-> server -->
+  <line class="wire" x1="358" y1="440" x2="432" y2="440" marker-start="url(#head)" marker-end="url(#head)"/>
+  <rect class="pill" x="337" y="380" width="116" height="40" rx="20"/>
+  <text class="pilltext" x="395" y="407" text-anchor="middle">REST</text>
+
+  <!-- C++ REST server -->
+  <rect class="card" x="440" y="240" width="300" height="400" rx="32"/>
+  <g class="icon" transform="translate(476 284)">
+    <rect x="0" y="0" width="96" height="30" rx="8"/>
+    <rect x="0" y="42" width="96" height="30" rx="8"/>
+    <line x1="18" y1="15" x2="40" y2="15"/>
+    <line x1="18" y1="57" x2="40" y2="57"/>
+    <circle cx="78" cy="15" r="3"/>
+    <circle cx="78" cy="57" r="3"/>
+  </g>
+  <text class="label" x="476" y="410">SERVER</text>
+  <text class="title" x="476" y="462">C++ REST</text>
+  <text class="title" x="476" y="508">server</text>
+  <text class="sub" x="476" y="558">Multithreaded,</text>
+  <text class="sub" x="476" y="592">real time</text>
+
+  <!-- Server -> devices bus -->
+  <line class="wire" x1="748" y1="440" x2="786" y2="440"/>
+  <line class="wire" x1="786" y1="218" x2="786" y2="662"/>
+  <line class="wire" x1="786" y1="218" x2="812" y2="218" marker-end="url(#head)"/>
+  <line class="wire" x1="786" y1="366" x2="812" y2="366" marker-end="url(#head)"/>
+  <line class="wire" x1="786" y1="514" x2="812" y2="514" marker-end="url(#head)"/>
+  <line class="wire" x1="786" y1="662" x2="812" y2="662" marker-end="url(#head)"/>
+  <line class="wire" x1="786" y1="110" x2="786" y2="218" stroke-dasharray="4 8"/>
+  <rect class="pill" x="656" y="70" width="260" height="40" rx="20"/>
+  <text class="pilltext" x="786" y="97" text-anchor="middle">USB · LAN · SCPI</text>
+
+  <!-- Programmable power sources -->
+  <rect class="device" x="820" y="153" width="400" height="130" rx="26"/>
+  <g class="dicon" transform="translate(850 194)">
+    <path d="M0 24 C 12 -8, 24 -8, 36 24 S 60 56, 72 24"/>
+  </g>
+  <text class="dtitle" x="944" y="211">Power sources</text>
+  <text class="tag" x="944" y="247">PROGRAMMABLE AC/DC</text>
+
+  <!-- Electronic power transfer switches -->
+  <rect class="device" x="820" y="301" width="400" height="130" rx="26"/>
+  <g class="dicon" transform="translate(850 344)">
+    <line x1="0" y1="24" x2="18" y2="24"/>
+    <circle cx="22" cy="24" r="4"/>
+    <line x1="25" y1="21" x2="54" y2="4"/>
+    <circle cx="56" cy="24" r="4"/>
+    <line x1="60" y1="24" x2="72" y2="24"/>
+  </g>
+  <text class="dtitle" x="944" y="359">Transfer switches</text>
+  <text class="tag" x="944" y="395">EPTS</text>
+
+  <!-- Harmonics & flicker measurement -->
+  <rect class="device" x="820" y="449" width="400" height="130" rx="26"/>
+  <g class="dicon" transform="translate(850 484)">
+    <line x1="4" y1="54" x2="4" y2="4"/>
+    <line x1="20" y1="54" x2="20" y2="22"/>
+    <line x1="36" y1="54" x2="36" y2="32"/>
+    <line x1="52" y1="54" x2="52" y2="40"/>
+    <line x1="68" y1="54" x2="68" y2="46"/>
+  </g>
+  <text class="dtitle" x="944" y="507">Harmonics &amp; flicker</text>
+  <text class="tag" x="944" y="543">HFMM · LFZ</text>
+
+  <!-- Data acquisition -->
+  <rect class="device" x="820" y="597" width="400" height="130" rx="26"/>
+  <g class="dicon" transform="translate(850 635)">
+    <rect x="0" y="0" width="72" height="54" rx="8"/>
+    <polyline points="10,38 22,22 34,32 46,12 62,28"/>
+  </g>
+  <text class="dtitle" x="944" y="655">DAQ devices</text>
+  <text class="tag" x="944" y="691">VOLTAGE · CURRENT</text>
+</svg>

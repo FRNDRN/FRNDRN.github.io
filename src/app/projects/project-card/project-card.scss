@@ -12,24 +12,23 @@
   background: var(--mat-sys-surface-container-low);
 }
 
+// Same proportion as the project illustrations, so they show whole instead of cropped.
 .media {
   position: relative;
-  height: 200px;
+  aspect-ratio: 620 / 440;
   margin-bottom: 16px;
   overflow: hidden;
   border-radius: 20px;
   background: var(--mat-sys-surface-container-high);
 
   img {
-    object-fit: cover;
+    object-fit: contain;
   }
 }
 
-.media-box {
+.media--placeholder {
   display: grid;
   place-items: center;
-  width: 100%;
-  height: 100%;
   color: var(--mat-sys-on-surface-variant);
 
   mat-icon {

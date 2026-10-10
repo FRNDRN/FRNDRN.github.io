@@ -1,13 +1,14 @@
 <article class="card">
-  <div class="media">
-    @if (project()?.image; as img) {
-      <img [ngSrc]="img.src" [alt]="img.alt" fill sizes="(min-width: 840px) 50vw, 100vw" />
-    } @else {
-      <div class="media-box" aria-hidden="true"><mat-icon svgIcon="photo" /></div>
-    }
-  </div>
-
   @if (project(); as p) {
+    @if (p.image !== null) {
+      <div class="media">
+        <img
+          [ngSrc]="p.image.src"
+          [alt]="p.image.alt"
+          fill
+          sizes="(min-width: 840px) 50vw, 100vw" />
+      </div>
+    }
     <div class="top">
       <p class="categories">{{ categoryLabel(p) }}</p>
       @if (p.status === 'in-progress') {
@@ -26,6 +27,7 @@
       [ariaLabel]="strings().projects.stackAria" />
     <p class="origin">{{ p.origin }}</p>
   } @else {
+    <div class="media media--placeholder" aria-hidden="true"><mat-icon svgIcon="photo" /></div>
     <div class="top">
       <app-skeleton width="120px" height="12px" />
     </div>

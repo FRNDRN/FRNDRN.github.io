@@ -13,7 +13,7 @@
 
   <div class="content">
     @if (featured(); as f) {
-      <app-featured-project [project]="f" />
+      <app-featured-project [project]="f" [priority]="true" />
     }
     <div class="grid">
       @for (project of others(); track project.slug) {

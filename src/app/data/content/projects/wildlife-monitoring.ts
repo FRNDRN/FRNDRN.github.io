@@ -31,7 +31,13 @@ export function wildlifeMonitoring(t: Translate): Project {
       'PyQt',
       'VGG16 / VGG19',
     ],
-    image: null,
+    image: {
+      src: '/images/projects/wildlife-camera-trap.svg',
+      alt: t(
+        'Render of the camera trap on a pole: solar panel, PIR sensor head picking up the heat of a deer and a rotating camera enclosure with infrared LEDs on a side bracket.',
+        'Render de la cámara trampa sobre un poste: panel solar, cabezal de sensores PIR que capta el calor de un ciervo y gabinete giratorio de la cámara con LEDs infrarrojos sobre un soporte lateral.',
+      ),
+    },
     caption: null,
     hasCaseStudy: false,
     links: [

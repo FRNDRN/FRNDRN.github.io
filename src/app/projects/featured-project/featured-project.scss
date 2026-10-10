@@ -13,18 +13,31 @@
 
 // Two columns once the card itself is wide enough; stacked otherwise.
 @container (min-width: 900px) {
-  .featured {
+  .featured:not(.featured--text-only) {
     grid-template-columns: 620px 1fr;
     align-items: start;
   }
 }
 
+.viewer {
+  margin: 0;
+}
+
 .viewer-box {
-  display: grid;
-  place-items: center;
+  position: relative;
   aspect-ratio: 620 / 440;
+  overflow: hidden;
   border-radius: 24px;
   background: var(--mat-sys-surface-container-high);
+
+  img {
+    object-fit: contain;
+  }
+}
+
+.viewer-box--placeholder {
+  display: grid;
+  place-items: center;
   color: var(--mat-sys-on-surface-variant);
 
   mat-icon {

@@ -1,19 +1,22 @@
-<article class="featured">
-  <div class="viewer">
-    <div class="viewer-box" aria-hidden="true">
-      <mat-icon svgIcon="photo" />
-    </div>
-    @if (project(); as p) {
-      @if (p.caption !== null) {
-        <p class="fig">{{ p.caption }}</p>
-      }
-    } @else {
-      <app-skeleton class="fig" width="220px" height="12px" />
+<article class="featured" [class.featured--text-only]="project()?.image === null">
+  @if (project(); as p) {
+    @if (p.image !== null) {
+      <figure class="viewer">
+        <div class="viewer-box">
+          <img
+            [ngSrc]="p.image.src"
+            [alt]="p.image.alt"
+            fill
+            [priority]="priority()"
+            sizes="(min-width: 900px) 50vw, 100vw" />
+        </div>
+        @if (p.caption !== null) {
+          <figcaption class="fig">{{ p.caption }}</figcaption>
+        }
+      </figure>
     }
-  </div>
 
-  <div class="body">
-    @if (project(); as p) {
+    <div class="body">
       <div class="badges">
         <app-badge tone="tertiary">{{ strings().projects.featured }}</app-badge>
         <app-badge tone="outlined">{{ p.context }}</app-badge>
@@ -44,7 +47,16 @@
           </a>
         }
       </div>
-    } @else {
+    </div>
+  } @else {
+    <div class="viewer">
+      <div class="viewer-box viewer-box--placeholder" aria-hidden="true">
+        <mat-icon svgIcon="photo" />
+      </div>
+      <app-skeleton class="fig" width="220px" height="12px" />
+    </div>
+
+    <div class="body">
       <div class="badges">
         <app-skeleton shape="pill" width="92px" height="28px" />
         <app-skeleton shape="pill" width="150px" height="28px" />
@@ -57,6 +69,6 @@
         }
       </div>
       <app-tag-list class="stack" />
-    }
-  </div>
+    </div>
+  }
 </article>
