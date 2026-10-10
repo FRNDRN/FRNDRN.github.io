@@ -6,18 +6,18 @@
   @if (item(); as it) {
     <p class="meta">{{ it.meta }}</p>
     <h3 class="title">{{ it.title }}</h3>
-    @if (it.institution; as institution) {
-      <p class="institution">{{ institution }}</p>
+    @if (it.institution !== null) {
+      <p class="institution">{{ it.institution }}</p>
     }
-    @if (it.link; as link) {
+    @if (it.link !== null) {
       <a
         class="link"
         matButton="tonal"
-        [href]="link.url"
+        [href]="it.link.url"
         target="_blank"
         rel="noopener"
-        [attr.aria-label]="link.label + ' ' + strings().common.opensInNewTab">
-        {{ link.label }}
+        [attr.aria-label]="it.link.label + ' ' + strings().common.opensInNewTab">
+        {{ it.link.label }}
         <mat-icon svgIcon="external-link" iconPositionEnd />
       </a>
     }

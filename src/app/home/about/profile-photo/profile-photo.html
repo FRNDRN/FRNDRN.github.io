@@ -3,9 +3,9 @@
     class="shape"
     viewBox="0 0 380 380"
     focusable="false"
-    [attr.role]="photo() ? 'img' : null"
+    [attr.role]="photo() !== null ? 'img' : null"
     [attr.aria-label]="photo()?.alt"
-    [attr.aria-hidden]="photo() ? null : 'true'">
+    [attr.aria-hidden]="photo() !== null ? null : 'true'">
     <defs>
       <clipPath id="profileCookie">
         <path [attr.d]="path" />
@@ -22,7 +22,7 @@
     }
   </svg>
 
-  @if (!photo()) {
+  @if (photo() === null) {
     <span class="placeholder" aria-hidden="true">
       <mat-icon svgIcon="person" />
     </span>

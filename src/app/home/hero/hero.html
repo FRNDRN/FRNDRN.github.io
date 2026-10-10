@@ -10,8 +10,6 @@
         }
       </p>
 
-      <p class="overline">{{ strings().hero.overline }}</p>
-
       <h1 class="name">
         @if (profile(); as p) {
           {{ p.name }}
@@ -39,11 +37,6 @@
             {{ strings().hero.downloadCv }}
             <mat-icon svgIcon="download" iconPositionEnd />
           </a>
-        } @else {
-          <button matButton="tonal" type="button" disabled>
-            {{ strings().hero.downloadCv }}
-            <mat-icon svgIcon="download" iconPositionEnd />
-          </button>
         }
 
         <span class="sep" aria-hidden="true"></span>
@@ -104,7 +97,5 @@
         </div>
       </div>
     </div>
-
-    <app-oscilloscope class="scope" />
   </div>
 </section>

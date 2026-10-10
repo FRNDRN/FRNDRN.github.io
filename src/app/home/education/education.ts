@@ -1,6 +1,7 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, inject, input, InputSignal, Signal } from '@angular/core';
 import { EducationItem } from '../../data/education';
 import { I18n } from '../../shared/i18n/i18n';
+import { UiStrings } from '../../shared/i18n/ui-strings';
 import { SectionHeader } from '../../shared/ui/section-header/section-header';
 import { EducationCard } from './education-card/education-card';
 
@@ -11,9 +12,12 @@ import { EducationCard } from './education-card/education-card';
   templateUrl: './education.html',
 })
 export class Education {
-  protected readonly strings = inject(I18n).strings;
+  // Inputs
+  public readonly items: InputSignal<readonly EducationItem[] | undefined> = input<
+    readonly EducationItem[] | undefined
+  >();
 
-  readonly items = input<readonly EducationItem[] | undefined>();
-
-  protected readonly placeholders = [0, 1];
+  // View state
+  protected readonly strings: Signal<UiStrings> = inject(I18n).strings;
+  protected readonly placeholders: readonly number[] = [0, 1];
 }

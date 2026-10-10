@@ -1,5 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { App } from './app';
 
 describe('App', () => {
@@ -11,14 +12,14 @@ describe('App', () => {
   });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(App);
+    const fixture: ComponentFixture<App> = TestBed.createComponent(App);
     expect(fixture.componentInstance).toBeTruthy();
   });
 
   it('should render the skip link', () => {
-    const fixture = TestBed.createComponent(App);
+    const fixture: ComponentFixture<App> = TestBed.createComponent(App);
     fixture.detectChanges();
-    const el = fixture.nativeElement as HTMLElement;
-    expect(el.querySelector('.skip-link')?.getAttribute('href')).toBe('#content');
+    const element: HTMLElement = fixture.nativeElement as HTMLElement;
+    expect(element.querySelector('.skip-link')?.getAttribute('href')).toBe('#content');
   });
 });

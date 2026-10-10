@@ -11,7 +11,7 @@
 
   @include bp.from(large) {
     grid-template-columns: 200px 40px 1fr;
-    gap: 24px;
+    gap: var(--app-gap);
     align-items: start;
   }
 }
@@ -27,13 +27,13 @@
   margin: 0 0 4px;
   color: var(--mat-sys-on-surface);
   font-family: var(--app-font-mono);
-  font-size: 14px;
+  font-size: var(--app-text-sm);
 }
 
 .place {
   margin: 0;
   color: var(--mat-sys-on-surface-variant);
-  font-size: 13px;
+  font-size: var(--app-text-sm);
 }
 
 .rail {
@@ -71,7 +71,7 @@
 }
 
 .card {
-  padding: 32px;
+  padding: var(--app-card-pad);
   border-radius: 24px;
   background: var(--mat-sys-surface-container-low);
 }
@@ -86,14 +86,24 @@
 
 .role {
   margin: 0 0 4px;
-  font-size: 26px;
+  font-size: var(--app-title-sm);
   font-weight: 500;
 }
 
 .org {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   margin: 0;
   color: var(--mat-sys-primary);
-  font-size: 17px;
+  font-size: var(--app-text-base);
+}
+
+// Organization marks are usually wider than tall, so the box is wider than a regular icon.
+.org-logo {
+  flex: none;
+  width: 30px;
+  height: 20px;
 }
 
 .org-skeleton {
@@ -101,11 +111,18 @@
   margin-bottom: 16px;
 }
 
+.summary {
+  margin: 16px 0;
+  color: var(--mat-sys-on-surface-variant);
+  font-size: var(--app-text-base);
+  line-height: 1.55;
+}
+
 .highlights {
   margin: 0 0 16px;
   padding-left: 20px;
   color: var(--mat-sys-on-surface-variant);
-  font-size: 17px;
+  font-size: var(--app-text-base);
   line-height: 1.55;
 
   li {

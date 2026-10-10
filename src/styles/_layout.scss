@@ -1,0 +1,6 @@
+// Centred content column shared by every page section.
+@mixin section-container {
+  max-width: var(--app-content-width);
+  margin-inline: auto;
+  padding: var(--app-section-pad) var(--app-gutter);
+}

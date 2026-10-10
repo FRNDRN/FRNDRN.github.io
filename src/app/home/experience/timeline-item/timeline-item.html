@@ -19,12 +19,21 @@
       <div class="head">
         <div>
           <h3 class="role">{{ it.role }}</h3>
-          <p class="org">{{ it.organization }}{{ it.team ? ' · ' + it.team : '' }}</p>
+          <p class="org">
+            @if (it.logo !== null) {
+              <mat-icon class="org-logo" [svgIcon]="it.logo" aria-hidden="true" />
+            }
+            <span>{{ it.organization }}{{ it.team !== null ? ' · ' + it.team : '' }}</span>
+          </p>
         </div>
         @if (isCurrent()) {
           <app-badge tone="tertiary">{{ strings().experience.current }}</app-badge>
         }
       </div>
+
+      @if (it.summary !== null) {
+        <p class="summary">{{ it.summary }}</p>
+      }
 
       <ul class="highlights">
         @for (highlight of it.highlights; track $index) {
@@ -32,28 +41,24 @@
         }
       </ul>
 
-      @if (it.moreHighlights?.length) {
+      @if (it.moreHighlights.length > 0) {
         <ul class="highlights more-list" [id]="moreId" [hidden]="!expanded()">
-          @for (highlight of it.moreHighlights ?? []; track $index) {
+          @for (highlight of it.moreHighlights; track $index) {
             <li>{{ highlight }}</li>
           }
         </ul>
       }
 
-      <app-tag-list
-        class="stack"
-        [tags]="it.stack"
-        appearance="outlined"
-        [ariaLabel]="strings().experience.stackAria" />
+      <app-tag-list class="stack" [tags]="it.stack" [ariaLabel]="strings().experience.stackAria" />
 
-      @if (it.moreHighlights?.length) {
+      @if (it.moreHighlights.length > 0) {
         <button
           matButton="text"
           type="button"
           class="more"
           [attr.aria-expanded]="expanded()"
           [attr.aria-controls]="moreId"
-          (click)="toggleResponsibilities()">
+          (click)="onToggleClicked()">
           {{ expanded() ? strings().experience.showLess : strings().experience.showAll }}
           <mat-icon svgIcon="chevron-down" iconPositionEnd [class.flipped]="expanded()" />
         </button>
@@ -64,7 +69,7 @@
       </div>
       <app-skeleton class="org-skeleton" width="40%" height="17px" />
       <app-skeleton [lines]="3" height="17px" />
-      <app-tag-list class="stack" appearance="outlined" />
+      <app-tag-list class="stack" />
     }
   </article>
 </div>

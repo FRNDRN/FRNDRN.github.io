@@ -1,8 +1,9 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, inject, input, InputSignal, Signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Profile } from '../../data/profile';
 import { I18n } from '../../shared/i18n/i18n';
+import { UiStrings } from '../../shared/i18n/ui-strings';
 import { SectionHeader } from '../../shared/ui/section-header/section-header';
 import { Skeleton } from '../../shared/ui/skeleton/skeleton';
 
@@ -13,9 +14,10 @@ import { Skeleton } from '../../shared/ui/skeleton/skeleton';
   templateUrl: './contact.html',
 })
 export class Contact {
-  protected readonly strings = inject(I18n).strings;
+  // Inputs
+  public readonly profile: InputSignal<Profile | undefined> = input<Profile | undefined>();
 
-  readonly profile = input<Profile | undefined>();
-
-  protected readonly linkPlaceholders = [0, 1, 2];
+  // View state
+  protected readonly strings: Signal<UiStrings> = inject(I18n).strings;
+  protected readonly linkPlaceholders: readonly number[] = [0, 1, 2];
 }

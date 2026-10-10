@@ -1,5 +1,6 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, Signal } from '@angular/core';
 import { I18n } from '../i18n';
+import { UiStrings } from '../ui-strings';
 
 @Component({
   selector: 'app-language-toggle',
@@ -7,21 +8,21 @@ import { I18n } from '../i18n';
   templateUrl: './language-toggle.html',
 })
 export class LanguageToggle {
-  private readonly i18n = inject(I18n);
+  // Dependencies
+  private readonly i18n: I18n = inject(I18n);
 
-  protected readonly locale = this.i18n.locale;
-  private readonly strings = this.i18n.strings;
-
-  protected readonly code = computed(() => this.locale().toUpperCase());
-  protected readonly label = computed(() => {
-    const s = this.strings().language;
-    const isEnglish = this.locale() === 'en';
-    const current = isEnglish ? s.english : s.spanish;
-    const next = isEnglish ? s.spanish : s.english;
-    return `${s.prefix} ${current}. ${s.switchTo} ${next}`;
+  // View state
+  protected readonly code: Signal<string> = computed(() => this.i18n.locale().toUpperCase());
+  protected readonly label: Signal<string> = computed(() => {
+    const copy: UiStrings['language'] = this.i18n.strings().language;
+    const isEnglish: boolean = this.i18n.locale() === 'en';
+    const current: string = isEnglish ? copy.english : copy.spanish;
+    const next: string = isEnglish ? copy.spanish : copy.english;
+    return `${copy.prefix} ${current}. ${copy.switchTo} ${next}`;
   });
 
-  toggleLanguage(): void {
+  // Events
+  protected onToggleClicked(): void {
     this.i18n.toggle();
   }
 }

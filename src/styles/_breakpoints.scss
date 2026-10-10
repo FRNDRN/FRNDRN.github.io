@@ -1,9 +1,9 @@
 @use 'sass:map';
 
 $_widths: (
-  medium:   600px,
+  medium: 600px,
   expanded: 840px,
-  large:    1200px,
+  large: 1200px,
 );
 
 @mixin from($name) {

@@ -1,10 +1,9 @@
 const s = (inner: string): string =>
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${inner}</svg>`;
 
+// eslint-disable-next-line @typescript-eslint/typedef -- the inferred literal keys define IconName
 export const ICONS = {
-  'arrow-right': s(
-    '<line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>',
-  ),
+  'arrow-right': s('<line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>'),
   download: s(
     '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>',
   ),
@@ -25,21 +24,14 @@ export const ICONS = {
   'external-link': s(
     '<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>',
   ),
-  plus: s(
-    '<line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>',
-  ),
-  school: s(
-    '<path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>',
-  ),
+  school: s('<path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>'),
   document: s(
     '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>',
   ),
   photo: s(
     '<rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>',
   ),
-  person: s(
-    '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
-  ),
+  person: s('<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>'),
   // Half-filled circle: left half solid, right half outline — represents auto/system theme
   'theme-auto': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 0 0 20V2z" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="10"/></svg>`,
   home: s(
@@ -55,6 +47,8 @@ export const ICONS = {
   linkedin: s(
     '<line x1="7" y1="11" x2="7" y2="17"/><circle cx="7" cy="8.5" r="1.5" fill="currentColor" stroke="none"/><line x1="12" y1="17" x2="12" y2="11"/><path d="M12 11a3 3 0 0 1 6 0v6"/>',
   ),
+  // PPST waveform mark, monochrome so it follows the theme colour.
+  ppst: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 13 421 286" fill="none" stroke="currentColor" stroke-width="27" stroke-linejoin="round"><path d="M26 130 H91 C119 130 120 194 145 194 C174 194 174 52 208 52 C241 52 244 260 279 260 C313 260 306 129 346 129 H415"/></svg>`,
 } as const satisfies Record<string, string>;
 
 export type IconName = keyof typeof ICONS;

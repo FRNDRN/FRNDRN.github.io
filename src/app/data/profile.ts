@@ -1,4 +1,12 @@
+import { ImageAsset } from './image-asset';
 import { Stat } from './stat';
+
+export interface ProfileLinks {
+  readonly email: string;
+  readonly linkedin: string;
+  readonly github: string;
+  readonly cv: string | null;
+}
 
 export interface Profile {
   readonly name: string;
@@ -7,11 +15,6 @@ export interface Profile {
   readonly tagline: string;
   readonly about: readonly string[];
   readonly stats: readonly Stat[];
-  readonly photo?: { readonly src: string; readonly alt: string };
-  readonly links: {
-    readonly email: string;
-    readonly linkedin: string;
-    readonly github: string;
-    readonly cv?: string;
-  };
+  readonly photo: ImageAsset | null;
+  readonly links: ProfileLinks;
 }

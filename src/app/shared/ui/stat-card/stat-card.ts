@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, InputSignal } from '@angular/core';
 import { Stat } from '../../../data/stat';
 import { Skeleton } from '../skeleton/skeleton';
 
@@ -14,6 +14,7 @@ type StatVariant = 'about' | 'metric';
   },
 })
 export class StatCard {
-  readonly stat = input<Stat | undefined>();
-  readonly variant = input<StatVariant>('about');
+  // Inputs
+  public readonly stat: InputSignal<Stat | undefined> = input<Stat | undefined>();
+  public readonly variant: InputSignal<StatVariant> = input<StatVariant>('about');
 }

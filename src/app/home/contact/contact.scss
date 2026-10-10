@@ -1,39 +1,30 @@
 @use '@angular/material' as mat;
 @use '../../../styles/breakpoints' as bp;
+@use '../../../styles/layout' as layout;
 
 :host {
   display: block;
 }
 
 .inner {
-  max-width: var(--app-content-width);
-  margin-inline: auto;
-  padding: clamp(48px, 8vw, 80px) var(--app-gutter);
+  @include layout.section-container;
 }
 
 .block {
   max-width: 720px;
   margin-inline: auto;
-  padding: 64px;
-  border-radius: 40px;
+  padding: clamp(28px, 6vw, 56px);
+  border-radius: clamp(28px, 4vw, 40px);
   background: var(--mat-sys-primary-container);
   color: var(--mat-sys-on-primary-container);
 
   // Tint skeletons so they read on the coloured block.
   --app-skeleton-color: color-mix(in srgb, var(--mat-sys-on-primary-container) 14%, transparent);
-  --app-skeleton-highlight: color-mix(in srgb, var(--mat-sys-on-primary-container) 24%, transparent);
-
-  @include bp.below(medium) {
-    padding: 32px;
-    border-radius: 28px;
-  }
-}
-
-.lead {
-  max-width: 560px;
-  margin: 16px 0 0;
-  font-size: 19px;
-  line-height: 1.5;
+  --app-skeleton-highlight: color-mix(
+    in srgb,
+    var(--mat-sys-on-primary-container) 24%,
+    transparent
+  );
 }
 
 .links {
@@ -49,7 +40,7 @@
     align-items: center;
     gap: 12px;
     color: var(--mat-sys-on-primary-container);
-    font-size: 18px;
+    font-size: var(--app-text-lg);
     text-decoration: none;
 
     &:hover {

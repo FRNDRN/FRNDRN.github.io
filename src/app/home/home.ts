@@ -8,7 +8,6 @@ import { Experience } from './experience/experience';
 import { ProjectsSection } from './projects-section/projects-section';
 import { Skills } from './skills/skills';
 import { Education } from './education/education';
-import { Now } from './now/now';
 import { Contact } from './contact/contact';
 
 @Component({
@@ -22,12 +21,12 @@ import { Contact } from './contact/contact';
     ProjectsSection,
     Skills,
     Education,
-    Now,
     Contact,
   ],
   styleUrl: './home.scss',
   templateUrl: './home.html',
 })
 export class Home {
-  protected readonly portfolio = inject(Portfolio);
+  // Dependencies
+  protected readonly portfolio: Portfolio = inject(Portfolio);
 }

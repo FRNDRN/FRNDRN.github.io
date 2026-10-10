@@ -1,12 +1,14 @@
-import { Component, computed, inject, input } from '@angular/core';
+import { Component, computed, inject, input, InputSignal, Signal } from '@angular/core';
 import { MatChipsModule } from '@angular/material/chips';
-import { SkillGroup } from '../../../data/skill';
+import { MatIconModule } from '@angular/material/icon';
+import { SkillGroup, SkillGroupTone } from '../../../data/skill';
 import { I18n } from '../../../shared/i18n/i18n';
+import { UiStrings } from '../../../shared/i18n/ui-strings';
 import { Skeleton } from '../../../shared/ui/skeleton/skeleton';
 
 @Component({
   selector: 'app-skill-group-card',
-  imports: [MatChipsModule, Skeleton],
+  imports: [MatChipsModule, MatIconModule, Skeleton],
   styleUrl: './skill-group-card.scss',
   templateUrl: './skill-group-card.html',
   host: {
@@ -17,14 +19,16 @@ import { Skeleton } from '../../../shared/ui/skeleton/skeleton';
   },
 })
 export class SkillGroupCard {
-  protected readonly strings = inject(I18n).strings;
-
-  readonly group = input<SkillGroup | undefined>();
+  // Inputs
+  public readonly group: InputSignal<SkillGroup | undefined> = input<SkillGroup | undefined>();
   // Drives the skeleton layout (large vs outlined) before data arrives.
-  readonly fallbackTone = input<SkillGroup['tone']>('primary');
+  public readonly fallbackTone: InputSignal<SkillGroupTone> = input<SkillGroupTone>('primary');
 
-  protected readonly tone = computed(() => this.group()?.tone ?? this.fallbackTone());
-  protected readonly isLarge = computed(() => this.tone() !== 'outlined');
-
-  protected readonly placeholders = [0, 1, 2, 3, 4];
+  // View state
+  protected readonly strings: Signal<UiStrings> = inject(I18n).strings;
+  protected readonly tone: Signal<SkillGroupTone> = computed(
+    () => this.group()?.tone ?? this.fallbackTone(),
+  );
+  protected readonly isLarge: Signal<boolean> = computed(() => this.tone() !== 'outlined');
+  protected readonly placeholders: readonly number[] = [0, 1, 2, 3, 4];
 }

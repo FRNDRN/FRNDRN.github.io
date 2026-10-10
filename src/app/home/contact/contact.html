@@ -3,13 +3,8 @@
     <div class="block">
       <app-section-header
         class="header"
-        index="06"
-        [name]="strings().sections.contact.overline"
         [title]="strings().sections.contact.title"
-        headingId="contact-title"
-        tone="on-primary-container" />
-
-      <p class="lead">{{ strings().sections.contact.lead }}</p>
+        headingId="contact-title" />
 
       <ul class="links">
         @if (profile(); as p) {

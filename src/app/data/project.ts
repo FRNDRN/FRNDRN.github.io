@@ -1,3 +1,4 @@
+import { ImageAsset } from './image-asset';
 import { Stat } from './stat';
 
 export type ProjectCategory = 'embedded' | 'web' | 'machine-learning' | 'robotics';
@@ -27,9 +28,10 @@ export interface Project {
   readonly context: string; // e.g. 'Final degree project · 2023'
   readonly origin: string; // e.g. 'Personal project · 2026'
   readonly metrics: readonly Stat[];
-  readonly highlight?: string; // mono line on the card (protocols, key metric)
+  readonly highlight: string | null; // mono line on the card (protocols, key metric)
   readonly stack: readonly string[];
-  readonly image?: { readonly src: string; readonly alt: string };
+  readonly image: ImageAsset | null;
+  readonly caption: string | null; // figure caption, shown when the project is featured
   readonly hasCaseStudy: boolean;
   readonly links: readonly ProjectLink[]; // Report, Code, Schematics…
 }

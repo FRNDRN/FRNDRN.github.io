@@ -1,10 +1,12 @@
 :host {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 8px;
-  padding: 20px 24px;
+  padding: 20px 16px;
   border-radius: 20px;
   background: var(--mat-sys-surface-container-low);
+  text-align: center;
 }
 
 :host(.stat-card--metric) {
@@ -15,18 +17,18 @@
 .value {
   margin: 0;
   color: var(--mat-sys-primary);
-  font-size: 32px;
+  font-size: var(--app-title);
   font-weight: 500;
   line-height: 1;
 }
 
 :host(.stat-card--metric) .value {
   font-family: var(--app-font-mono);
-  font-size: 26px;
+  font-size: var(--app-title-sm);
 }
 
 .label {
   margin: 0;
   color: var(--mat-sys-on-surface-variant);
-  font-size: 14px;
+  font-size: var(--app-text-sm);
 }

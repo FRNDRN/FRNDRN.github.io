@@ -2,8 +2,8 @@
   <a class="back" routerLink="/">{{ strings().projects.backHome }}</a>
 
   <header class="head">
-    <h1 class="title">{{ strings().projects.pageTitle }}</h1>
-    <p class="subtitle">{{ strings().projects.pageSubtitle }}</p>
+    <h1 class="title">{{ strings().sections.projects.title }}</h1>
+    <p class="subtitle">{{ strings().sections.projects.subtitle }}</p>
   </header>
 
   <app-project-filters
@@ -19,7 +19,6 @@
       @for (project of others(); track project.slug) {
         <app-project-card [project]="project" />
       }
-      <app-next-project-slot />
     </div>
   </div>
 </div>

@@ -1,13 +1,9 @@
 <section id="about" class="about" aria-labelledby="about-title">
   <div class="inner">
-    <app-profile-photo class="photo" [photo]="profile()?.photo" />
+    <app-profile-photo class="photo" [photo]="profile()?.photo ?? null" />
 
     <div class="body">
-      <app-section-header
-        index="01"
-        [name]="strings().sections.about.overline"
-        [title]="strings().sections.about.title"
-        headingId="about-title" />
+      <app-section-header [title]="strings().sections.about.title" headingId="about-title" />
 
       <div class="paragraphs">
         @if (profile(); as p) {

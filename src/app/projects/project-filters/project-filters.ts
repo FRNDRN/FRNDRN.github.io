@@ -1,7 +1,8 @@
-import { Component, inject, model, viewChild } from '@angular/core';
+import { Component, inject, model, ModelSignal, Signal, viewChild } from '@angular/core';
 import { MatChipListbox, MatChipListboxChange, MatChipsModule } from '@angular/material/chips';
-import { PROJECT_CATEGORIES } from '../../data/project';
+import { PROJECT_CATEGORIES, ProjectCategory } from '../../data/project';
 import { I18n } from '../../shared/i18n/i18n';
+import { UiStrings } from '../../shared/i18n/ui-strings';
 import { CategoryFilter } from '../filter-projects';
 
 @Component({
@@ -11,21 +12,24 @@ import { CategoryFilter } from '../filter-projects';
   templateUrl: './project-filters.html',
 })
 export class ProjectFilters {
-  protected readonly strings = inject(I18n).strings;
+  // Models
+  public readonly category: ModelSignal<CategoryFilter> = model<CategoryFilter>('all');
 
-  readonly category = model<CategoryFilter>('all');
+  // Queries
+  private readonly listbox: Signal<MatChipListbox> = viewChild.required(MatChipListbox);
 
-  private readonly listbox = viewChild.required(MatChipListbox);
+  // View state
+  protected readonly strings: Signal<UiStrings> = inject(I18n).strings;
+  protected readonly categories: readonly ProjectCategory[] = PROJECT_CATEGORIES;
 
-  protected readonly categories = PROJECT_CATEGORIES;
-
+  // Events
   protected onChange(event: MatChipListboxChange): void {
-    const value = event.value as CategoryFilter | null;
-    if (value == null) {
+    const value: CategoryFilter | null | undefined = event.value;
+    if (value === null || value === undefined) {
       // A category is always selected: restore the current one on deselection.
       this.listbox().value = this.category();
-    } else {
-      this.category.set(value);
+      return;
     }
+    this.category.set(value);
   }
 }

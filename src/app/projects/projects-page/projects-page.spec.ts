@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, convertToParamMap, ParamMap, Router } from '@angular/router';
 import { of } from 'rxjs';
 import { describe, expect, it } from 'vitest';
@@ -6,7 +6,7 @@ import { CategoryFilter } from '../filter-projects';
 import { ProjectsPage } from './projects-page';
 
 function configure(category: string | null): void {
-  const paramMap: ParamMap = convertToParamMap(category ? { category } : {});
+  const paramMap: ParamMap = convertToParamMap(category !== null ? { category } : {});
   TestBed.configureTestingModule({
     providers: [
       { provide: Router, useValue: { navigate: () => Promise.resolve(true) } },
@@ -19,7 +19,7 @@ function configure(category: string | null): void {
 }
 
 function selectedCategory(): CategoryFilter {
-  const fixture = TestBed.createComponent(ProjectsPage);
+  const fixture: ComponentFixture<ProjectsPage> = TestBed.createComponent(ProjectsPage);
   return (fixture.componentInstance as unknown as { category: () => CategoryFilter }).category();
 }
 

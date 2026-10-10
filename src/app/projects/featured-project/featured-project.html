@@ -4,7 +4,9 @@
       <mat-icon svgIcon="photo" />
     </div>
     @if (project(); as p) {
-      <p class="fig">FIG. 01 — {{ p.title }}</p>
+      @if (p.caption !== null) {
+        <p class="fig">{{ p.caption }}</p>
+      }
     } @else {
       <app-skeleton class="fig" width="220px" height="12px" />
     }
@@ -23,11 +25,7 @@
           <app-stat-card [stat]="metric" variant="metric" />
         }
       </div>
-      <app-tag-list
-        class="stack"
-        [tags]="p.stack"
-        appearance="outlined"
-        [ariaLabel]="strings().projects.stackAria" />
+      <app-tag-list class="stack" [tags]="p.stack" [ariaLabel]="strings().projects.stackAria" />
       <div class="actions">
         @if (p.hasCaseStudy) {
           <button matButton="filled" type="button" disabled>
@@ -58,7 +56,7 @@
           <app-stat-card variant="metric" />
         }
       </div>
-      <app-tag-list class="stack" appearance="outlined" />
+      <app-tag-list class="stack" />
     }
   </div>
 </article>

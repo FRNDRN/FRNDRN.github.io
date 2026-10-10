@@ -16,14 +16,13 @@
     </div>
     <h3 class="title">{{ p.title }}</h3>
     <p class="summary">{{ p.summary }}</p>
-    @if (p.highlight; as highlight) {
-      <p class="highlight">{{ highlight }}</p>
+    @if (p.highlight !== null) {
+      <p class="highlight">{{ p.highlight }}</p>
     }
     <app-tag-list
       class="stack"
       [tags]="p.stack"
       size="small"
-      appearance="outlined"
       [ariaLabel]="strings().projects.stackAria" />
     <p class="origin">{{ p.origin }}</p>
   } @else {
@@ -32,7 +31,7 @@
     </div>
     <app-skeleton class="title" width="70%" height="24px" />
     <app-skeleton [lines]="2" height="16px" />
-    <app-tag-list class="stack" size="small" appearance="outlined" />
+    <app-tag-list class="stack" size="small" />
     <app-skeleton class="origin" width="140px" height="14px" />
   }
 </article>

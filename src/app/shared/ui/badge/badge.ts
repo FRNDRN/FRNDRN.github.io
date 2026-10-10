@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, InputSignal } from '@angular/core';
 
 type BadgeTone = 'tertiary' | 'secondary' | 'outlined';
 
@@ -13,6 +13,7 @@ type BadgeTone = 'tertiary' | 'secondary' | 'outlined';
   },
 })
 export class Badge {
-  readonly tone = input<BadgeTone>('tertiary');
-  readonly pulse = input<boolean>(false);
+  // Inputs
+  public readonly tone: InputSignal<BadgeTone> = input<BadgeTone>('tertiary');
+  public readonly pulse: InputSignal<boolean> = input<boolean>(false);
 }

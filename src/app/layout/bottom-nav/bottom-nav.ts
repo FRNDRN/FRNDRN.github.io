@@ -1,9 +1,14 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, Signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { ActiveSection } from '../active-section';
-import { BOTTOM_NAV_ITEMS, NavItem, SectionId } from '../navigation';
+import { BOTTOM_NAV_ITEMS, NavItem, PAGE_ORDER, SectionId } from '../navigation';
 import { I18n } from '../../shared/i18n/i18n';
+import { UiStrings } from '../../shared/i18n/ui-strings';
+
+const DESTINATION_IDS: ReadonlySet<string> = new Set<string>(
+  BOTTOM_NAV_ITEMS.map((item) => item.id),
+);
 
 @Component({
   selector: 'app-bottom-nav',
@@ -12,16 +17,30 @@ import { I18n } from '../../shared/i18n/i18n';
   templateUrl: './bottom-nav.html',
 })
 export class BottomNav {
-  private readonly activeSection = inject(ActiveSection);
-  protected readonly strings = inject(I18n).strings;
+  // Dependencies
+  private readonly activeSection: ActiveSection = inject(ActiveSection);
 
-  protected readonly items = BOTTOM_NAV_ITEMS;
+  // View state
+  protected readonly strings: Signal<UiStrings> = inject(I18n).strings;
+  protected readonly items: readonly NavItem[] = BOTTOM_NAV_ITEMS;
 
-  // At the top of the home page no section crosses the center yet, so Home lights up.
-  private readonly current = computed<SectionId>(
-    () => (this.activeSection.currentSection() as SectionId | null) ?? 'home',
-  );
+  // Keep a destination lit at all times: when the active section isn't one of the four
+  // bottom-nav destinations (e.g. about or skills), light the nearest preceding one.
+  private readonly current: Signal<SectionId> = computed(() => {
+    const active: string = this.activeSection.currentSection() ?? 'home';
+    if (DESTINATION_IDS.has(active)) {
+      return active as SectionId;
+    }
+    const index: number = PAGE_ORDER.indexOf(active);
+    for (let i: number = index; i >= 0; i--) {
+      if (DESTINATION_IDS.has(PAGE_ORDER[i])) {
+        return PAGE_ORDER[i] as SectionId;
+      }
+    }
+    return 'home';
+  });
 
+  // Template helpers
   protected link(item: NavItem): string {
     return item.id === 'projects' ? '/projects' : '/';
   }

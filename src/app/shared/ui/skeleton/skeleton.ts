@@ -1,4 +1,4 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, input, InputSignal, Signal } from '@angular/core';
 
 type SkeletonShape = 'text' | 'rect' | 'circle' | 'pill';
 
@@ -9,12 +9,14 @@ type SkeletonShape = 'text' | 'rect' | 'circle' | 'pill';
   host: { 'aria-hidden': 'true' },
 })
 export class Skeleton {
-  readonly width = input<string>('100%');
-  readonly height = input<string>('1em');
-  readonly shape = input<SkeletonShape>('text');
-  readonly lines = input<number>(1);
+  // Inputs
+  public readonly width: InputSignal<string> = input<string>('100%');
+  public readonly height: InputSignal<string> = input<string>('1em');
+  public readonly shape: InputSignal<SkeletonShape> = input<SkeletonShape>('text');
+  public readonly lines: InputSignal<number> = input<number>(1);
 
-  protected readonly items = computed(() =>
-    Array.from({ length: this.lines() }, (_, i) => i),
+  // View state
+  protected readonly items: Signal<readonly number[]> = computed(() =>
+    Array.from({ length: this.lines() }, (_, index) => index),
   );
 }

@@ -15,6 +15,20 @@ module.exports = defineConfig([
     ],
     processor: angular.processInlineTemplates,
     rules: {
+      eqeqeq: ['error', 'always'],
+      '@typescript-eslint/no-inferrable-types': 'off',
+      '@typescript-eslint/explicit-member-accessibility': ['error', { accessibility: 'explicit' }],
+      '@typescript-eslint/explicit-function-return-type': ['error', { allowExpressions: true }],
+      '@typescript-eslint/typedef': [
+        'error',
+        {
+          memberVariableDeclaration: true,
+          parameter: true,
+          propertyDeclaration: true,
+          variableDeclaration: true,
+          variableDeclarationIgnoreFunction: true,
+        },
+      ],
       '@angular-eslint/directive-selector': [
         'error',
         {

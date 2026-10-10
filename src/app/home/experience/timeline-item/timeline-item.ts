@@ -1,13 +1,23 @@
-import { Component, computed, inject, input, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  input,
+  InputSignal,
+  Signal,
+  signal,
+  WritableSignal,
+} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Experience as ExperienceItem } from '../../../data/experience';
 import { I18n } from '../../../shared/i18n/i18n';
+import { UiStrings } from '../../../shared/i18n/ui-strings';
 import { Badge } from '../../../shared/ui/badge/badge';
 import { Skeleton } from '../../../shared/ui/skeleton/skeleton';
 import { TagList } from '../../../shared/ui/tag-list/tag-list';
 
-let uid = 0;
+let nextId: number = 0;
 
 @Component({
   selector: 'app-timeline-item',
@@ -16,27 +26,31 @@ let uid = 0;
   templateUrl: './timeline-item.html',
 })
 export class TimelineItem {
-  private readonly i18n = inject(I18n);
-  protected readonly strings = this.i18n.strings;
+  // Dependencies
+  private readonly i18n: I18n = inject(I18n);
 
-  readonly item = input<ExperienceItem | undefined>();
+  // Inputs
+  public readonly item: InputSignal<ExperienceItem | undefined> = input<
+    ExperienceItem | undefined
+  >();
 
-  protected readonly moreId = `experience-more-${uid++}`;
+  // State
+  private readonly showAll: WritableSignal<boolean> = signal<boolean>(false);
 
-  private readonly showAll = signal(false);
-  protected readonly expanded = this.showAll.asReadonly();
-
-  protected readonly isCurrent = computed(() => {
-    const it = this.item();
-    return !!it && !it.end;
+  // View state
+  protected readonly strings: Signal<UiStrings> = this.i18n.strings;
+  protected readonly moreId: string = `experience-more-${nextId++}`;
+  protected readonly expanded: Signal<boolean> = this.showAll.asReadonly();
+  protected readonly isCurrent: Signal<boolean> = computed(() => {
+    const item: ExperienceItem | undefined = this.item();
+    return item !== undefined && item.end === null;
   });
-
-  protected readonly dateRange = computed(() => {
-    const it = this.item();
-    if (!it) {
+  protected readonly dateRange: Signal<string> = computed(() => {
+    const item: ExperienceItem | undefined = this.item();
+    if (item === undefined) {
       return '';
     }
-    const formatter = new Intl.DateTimeFormat(this.i18n.locale(), {
+    const formatter: Intl.DateTimeFormat = new Intl.DateTimeFormat(this.i18n.locale(), {
       month: 'short',
       year: 'numeric',
     });
@@ -44,11 +58,12 @@ export class TimelineItem {
       const [year, month] = value.split('-').map(Number);
       return formatter.format(new Date(year, (month || 1) - 1, 1));
     };
-    const end = it.end ? format(it.end) : this.strings().experience.present;
-    return `${format(it.start)} — ${end}`;
+    const end: string = item.end !== null ? format(item.end) : this.strings().experience.present;
+    return `${format(item.start)} — ${end}`;
   });
 
-  protected toggleResponsibilities(): void {
+  // Events
+  protected onToggleClicked(): void {
     this.showAll.update((value) => !value);
   }
 }

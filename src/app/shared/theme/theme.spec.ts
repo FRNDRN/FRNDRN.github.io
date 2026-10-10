@@ -38,7 +38,7 @@ describe('Theme', () => {
   });
 
   it('cycles system -> light -> dark -> system', () => {
-    const theme = create();
+    const theme: Theme = create();
     expect(theme.preference()).toBe('system');
     theme.cycle();
     expect(theme.preference()).toBe('light');
@@ -49,7 +49,7 @@ describe('Theme', () => {
   });
 
   it('stores light and dark, and clears the key on system', () => {
-    const theme = create();
+    const theme: Theme = create();
 
     theme.cycle();
     TestBed.tick();
@@ -65,8 +65,8 @@ describe('Theme', () => {
   });
 
   it('sets and removes data-theme on the document element', () => {
-    const theme = create();
-    const root = TestBed.inject(DOCUMENT).documentElement;
+    const theme: Theme = create();
+    const root: HTMLElement = TestBed.inject(DOCUMENT).documentElement;
 
     TestBed.tick();
     expect(root.hasAttribute('data-theme')).toBe(false);

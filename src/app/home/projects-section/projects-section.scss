@@ -1,34 +1,33 @@
 @use '../../../styles/breakpoints' as bp;
+@use '../../../styles/layout' as layout;
 
 :host {
   display: block;
 }
 
 .inner {
-  max-width: var(--app-content-width);
-  margin-inline: auto;
-  padding: clamp(64px, 8vw, 96px) var(--app-gutter);
+  @include layout.section-container;
 }
 
 .subtitle {
   max-width: 640px;
   margin: 16px 0 0;
   color: var(--mat-sys-on-surface-variant);
-  font-size: 17px;
+  font-size: var(--app-text-base);
   line-height: 1.5;
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  margin-top: 32px;
+  gap: var(--app-gap);
+  margin-top: var(--app-gap);
 }
 
 .grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: var(--app-gap);
 
   @include bp.from(expanded) {
     grid-template-columns: repeat(2, 1fr);

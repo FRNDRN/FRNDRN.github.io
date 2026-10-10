@@ -47,12 +47,12 @@
   background: var(--mat-sys-primary-container);
   color: var(--mat-sys-on-primary-container);
   font-family: var(--app-font-mono);
-  font-size: 15px;
+  font-size: var(--app-text-sm);
   font-weight: 500;
 }
 
 .name {
-  font-size: 16px;
+  font-size: var(--app-text-base);
   font-weight: 500;
 
   // Only the monogram and toggle show while the bottom nav is in use.
@@ -78,7 +78,7 @@
   padding: 0 16px;
   border-radius: 20px;
   color: var(--mat-sys-on-surface-variant);
-  font-size: 15px;
+  font-size: var(--app-text-sm);
   font-weight: 500;
   text-decoration: none;
   transition: background-color 120ms ease;

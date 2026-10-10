@@ -1,13 +1,13 @@
 @use '@angular/material' as mat;
 
 :host {
-  display: block;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .card {
-  height: 100%;
-  padding: 32px;
+  flex: 1;
+  padding: var(--app-card-pad);
   border-radius: 28px;
 }
 
@@ -27,7 +27,7 @@
   margin-bottom: 16px;
   border-radius: 14px;
   font-family: var(--app-font-mono);
-  font-size: 18px;
+  font-size: var(--app-text-lg);
   font-weight: 500;
 }
 
@@ -43,21 +43,14 @@
 
 .title {
   margin: 0 0 4px;
+  font-size: var(--app-title-sm);
   font-weight: 500;
-}
-
-:host(.card--large) .title {
-  font-size: 22px;
-}
-
-:host(.card--outlined) .title {
-  font-size: 20px;
 }
 
 .subtitle {
   margin: 0 0 12px;
   color: var(--mat-sys-on-surface-variant);
-  font-size: 14px;
+  font-size: var(--app-text-sm);
 }
 
 .chips {
@@ -76,7 +69,7 @@
     (
       container-height: 36px,
       container-shape-radius: 10px,
-      label-text-size: 15px,
+      label-text-size: var(--app-text-sm),
       label-text-weight: 500,
       outline-width: 0,
       elevated-container-color: var(--mat-sys-surface-container-high),
@@ -92,7 +85,7 @@
       container-height: 34px,
       container-shape-radius: 8px,
       label-text-font: var(--app-font-mono),
-      label-text-size: 13px,
+      label-text-size: var(--app-text-sm),
       outline-width: 1px,
       outline-color: var(--mat-sys-outline-variant),
       elevated-container-color: transparent,
@@ -101,13 +94,18 @@
   );
 }
 
-// Highlighted items (instruments): tonal tertiary chips.
-.chip--highlight {
-  @include mat.chips-overrides(
-    (
-      outline-width: 0,
-      elevated-container-color: var(--mat-sys-tertiary-container),
-      label-text-color: var(--mat-sys-on-tertiary-container),
-    )
-  );
+// Technology logos: 18px, monochrome, matching the chip's own text colour (theme-aware).
+.chip mat-icon[matChipAvatar] {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+  background: transparent;
+}
+
+:host(.card--large) .chip mat-icon[matChipAvatar] {
+  color: var(--mat-sys-on-surface);
+}
+
+:host(.card--outlined) .chip mat-icon[matChipAvatar] {
+  color: var(--mat-sys-primary);
 }

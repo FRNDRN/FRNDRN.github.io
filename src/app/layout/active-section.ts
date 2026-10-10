@@ -1,4 +1,13 @@
-import { afterNextRender, computed, DestroyRef, inject, Service, signal } from '@angular/core';
+import {
+  afterNextRender,
+  computed,
+  DestroyRef,
+  inject,
+  Service,
+  Signal,
+  signal,
+  WritableSignal,
+} from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, map } from 'rxjs';
@@ -14,10 +23,7 @@ export interface SectionBounds {
  * Returns null when the line falls in no section. Sections are read in document
  * order, so on an exact boundary tie the upper section wins.
  */
-export function activeSectionAt(
-  sections: readonly SectionBounds[],
-  center: number,
-): string | null {
+export function activeSectionAt(sections: readonly SectionBounds[], center: number): string | null {
   for (const section of sections) {
     if (center >= section.top && center <= section.bottom) {
       return section.id;
@@ -28,16 +34,15 @@ export function activeSectionAt(
 
 @Service()
 export class ActiveSection {
-  private readonly router = inject(Router);
-  private readonly destroyRef = inject(DestroyRef);
+  // Dependencies
+  private readonly router: Router = inject(Router);
+  private readonly destroyRef: DestroyRef = inject(DestroyRef);
 
-  private readonly elements = new Map<string, Element>();
+  // State
+  private readonly elements: Map<string, Element> = new Map<string, Element>();
   private observer: IntersectionObserver | null = null;
-
-  private readonly active = signal<string | null>(null);
-  readonly activeId = this.active.asReadonly();
-
-  private readonly url = toSignal(
+  private readonly active: WritableSignal<string | null> = signal<string | null>(null);
+  private readonly url: Signal<string> = toSignal(
     this.router.events.pipe(
       filter((event): event is NavigationEnd => event instanceof NavigationEnd),
       map(() => this.router.url),
@@ -45,14 +50,18 @@ export class ActiveSection {
     { initialValue: this.router.url },
   );
 
-  readonly onProjectsPage = computed(() => this.url().startsWith('/projects'));
+  // Public API
+  public readonly activeId: Signal<string | null> = this.active.asReadonly();
+  public readonly onProjectsPage: Signal<boolean> = computed(() =>
+    this.url().startsWith('/projects'),
+  );
 
   /** The active destination combining the route with the scrolled-to section. */
-  readonly currentSection = computed(() =>
+  public readonly currentSection: Signal<string | null> = computed(() =>
     this.onProjectsPage() ? 'projects' : this.activeId(),
   );
 
-  constructor() {
+  public constructor() {
     afterNextRender(() => {
       // A thin band at the viewport center; the observer just triggers a recompute.
       this.observer = new IntersectionObserver(() => this.recompute(), {
@@ -71,15 +80,15 @@ export class ActiveSection {
     });
   }
 
-  register(id: string, element: Element): void {
+  public register(id: string, element: Element): void {
     this.elements.set(id, element);
     this.observer?.observe(element);
     this.recompute();
   }
 
-  unregister(id: string): void {
-    const element = this.elements.get(id);
-    if (element) {
+  public unregister(id: string): void {
+    const element: Element | undefined = this.elements.get(id);
+    if (element !== undefined) {
       this.observer?.unobserve(element);
       this.elements.delete(id);
     }
@@ -88,14 +97,15 @@ export class ActiveSection {
     }
   }
 
+  // Helpers
   private recompute(): void {
     if (typeof window === 'undefined') {
       return;
     }
-    const center = window.innerHeight / 2;
+    const center: number = window.innerHeight / 2;
     const bounds: SectionBounds[] = [];
     for (const [id, element] of this.elements) {
-      const rect = element.getBoundingClientRect();
+      const rect: DOMRect = element.getBoundingClientRect();
       bounds.push({ id, top: rect.top, bottom: rect.bottom });
     }
     bounds.sort((a, b) => a.top - b.top);

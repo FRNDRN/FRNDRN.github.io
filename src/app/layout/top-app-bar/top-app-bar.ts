@@ -1,8 +1,9 @@
-import { Component, computed, inject, input } from '@angular/core';
+import { Component, computed, inject, input, InputSignal, Signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ActiveSection } from '../active-section';
-import { SectionId, TOP_BAR_ITEMS } from '../navigation';
+import { NavItem, SectionId, TOP_BAR_ITEMS } from '../navigation';
 import { I18n } from '../../shared/i18n/i18n';
+import { UiStrings } from '../../shared/i18n/ui-strings';
 import { LanguageToggle } from '../../shared/i18n/language-toggle/language-toggle';
 import { ThemeToggle } from '../../shared/theme/theme-toggle/theme-toggle';
 import { Skeleton } from '../../shared/ui/skeleton/skeleton';
@@ -14,16 +15,18 @@ import { Skeleton } from '../../shared/ui/skeleton/skeleton';
   templateUrl: './top-app-bar.html',
 })
 export class TopAppBar {
-  private readonly activeSection = inject(ActiveSection);
-  protected readonly strings = inject(I18n).strings;
+  // Dependencies
+  private readonly activeSection: ActiveSection = inject(ActiveSection);
 
-  readonly name = input<string | undefined>();
+  // Inputs
+  public readonly name: InputSignal<string | undefined> = input<string | undefined>();
 
-  protected readonly items = TOP_BAR_ITEMS;
-
-  protected readonly monogram = computed(() => {
-    const name = this.name();
-    if (!name) {
+  // View state
+  protected readonly strings: Signal<UiStrings> = inject(I18n).strings;
+  protected readonly items: readonly NavItem[] = TOP_BAR_ITEMS;
+  protected readonly monogram: Signal<string> = computed(() => {
+    const name: string | undefined = this.name();
+    if (name === undefined) {
       return '';
     }
     return name
@@ -35,6 +38,7 @@ export class TopAppBar {
       .toUpperCase();
   });
 
+  // Template helpers
   protected isActive(id: SectionId): boolean {
     return this.activeSection.currentSection() === id;
   }

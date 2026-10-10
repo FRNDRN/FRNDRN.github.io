@@ -1,21 +1,15 @@
-@use '../../../styles/breakpoints' as bp;
+@use '../../../styles/layout' as layout;
 
 :host {
   display: block;
 }
 
 .inner {
-  display: grid;
-  gap: 48px;
-  max-width: var(--app-content-width);
-  margin-inline: auto;
-  padding: clamp(48px, 8vw, 88px) var(--app-gutter) clamp(56px, 8vw, 96px);
+  @include layout.section-container;
+}
 
-  @include bp.from(large) {
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: 64px;
-    align-items: center;
-  }
+.intro {
+  max-width: 760px;
 }
 
 .location {
@@ -27,7 +21,7 @@
   border: 1px solid var(--mat-sys-outline-variant);
   border-radius: 999px;
   color: var(--mat-sys-on-surface-variant);
-  font-size: 14px;
+  font-size: var(--app-text-sm);
 
   mat-icon {
     width: 18px;
@@ -35,17 +29,9 @@
   }
 }
 
-.overline {
-  margin: 0 0 12px;
-  color: var(--mat-sys-tertiary);
-  font-family: var(--app-font-mono);
-  font-size: 13px;
-  letter-spacing: 0.06em;
-}
-
 .name {
   margin: 0 0 16px;
-  font-size: clamp(44px, 8vw, 84px);
+  font-size: var(--app-display);
   font-weight: 500;
   letter-spacing: -0.025em;
   line-height: 1.02;
@@ -54,7 +40,7 @@
 .role {
   margin: 0 0 20px;
   color: var(--mat-sys-primary);
-  font-size: 26px;
+  font-size: var(--app-title-sm);
   font-weight: 500;
 }
 
@@ -62,7 +48,7 @@
   max-width: 580px;
   margin: 0 0 32px;
   color: var(--mat-sys-on-surface-variant);
-  font-size: 19px;
+  font-size: var(--app-text-lg);
   line-height: 1.5;
 }
 
@@ -86,10 +72,4 @@
 
 .social {
   border: 1px solid var(--mat-sys-outline-variant);
-}
-
-.scope {
-  @include bp.below(large) {
-    margin-top: 8px;
-  }
 }

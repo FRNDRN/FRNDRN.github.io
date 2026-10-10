@@ -5,6 +5,8 @@
   (change)="onChange($event)">
   <mat-chip-option value="all">{{ strings().projects.all }}</mat-chip-option>
   @for (category of categories; track category) {
-    <mat-chip-option [value]="category">{{ strings().projects.categories[category] }}</mat-chip-option>
+    <mat-chip-option [value]="category">{{
+      strings().projects.categories[category]
+    }}</mat-chip-option>
   }
 </mat-chip-listbox>

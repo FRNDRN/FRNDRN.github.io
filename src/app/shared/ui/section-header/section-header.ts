@@ -1,7 +1,5 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, input, InputSignal } from '@angular/core';
 import { Skeleton } from '../skeleton/skeleton';
-
-type HeaderTone = 'default' | 'on-primary-container';
 
 @Component({
   selector: 'app-section-header',
@@ -10,14 +8,7 @@ type HeaderTone = 'default' | 'on-primary-container';
   templateUrl: './section-header.html',
 })
 export class SectionHeader {
-  readonly index = input<string>();
-  readonly name = input.required<string>();
-  readonly title = input<string | undefined>();
-  readonly headingId = input.required<string>();
-  readonly tone = input<HeaderTone>('default');
-
-  protected readonly overline = computed(() => {
-    const index = this.index();
-    return index ? `// ${index} — ${this.name()}` : `// ${this.name()}`;
-  });
+  // Inputs
+  public readonly title: InputSignal<string | undefined> = input<string | undefined>();
+  public readonly headingId: InputSignal<string> = input.required<string>();
 }

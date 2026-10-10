@@ -2,7 +2,6 @@ import { ProjectCategory } from '../../data/project';
 import { Locale } from './locale';
 
 interface SectionCopy {
-  readonly overline: string;
   readonly title: string;
 }
 
@@ -37,15 +36,11 @@ export interface UiStrings {
   };
   readonly hero: {
     readonly sectionAria: string;
-    readonly overline: string;
     readonly viewProjects: string;
     readonly downloadCv: string;
     readonly linkedin: string;
     readonly github: string;
     readonly email: string;
-  };
-  readonly scope: {
-    readonly caption: string;
   };
   readonly sections: {
     readonly about: SectionCopy;
@@ -53,8 +48,7 @@ export interface UiStrings {
     readonly projects: SectionCopy & { readonly subtitle: string };
     readonly skills: SectionCopy;
     readonly education: SectionCopy;
-    readonly now: SectionCopy;
-    readonly contact: SectionCopy & { readonly lead: string };
+    readonly contact: SectionCopy;
   };
   readonly experience: {
     readonly current: string;
@@ -71,12 +65,8 @@ export interface UiStrings {
     readonly filterAria: string;
     readonly all: string;
     readonly categories: Record<ProjectCategory, string>;
-    readonly nextTitle: string;
-    readonly nextNote: string;
     readonly stackAria: string;
-    readonly pageTitle: string;
     readonly backHome: string;
-    readonly pageSubtitle: string;
   };
   readonly contact: {
     readonly downloadCvPdf: string;
@@ -117,31 +107,23 @@ const EN: UiStrings = {
   },
   hero: {
     sectionAria: 'Introduction',
-    overline: '// electronics × software',
     viewProjects: 'View projects',
     downloadCv: 'Download CV',
     linkedin: 'LinkedIn',
     github: 'GitHub',
     email: 'Email',
   },
-  scope: {
-    caption: 'From silicon to interface — the path every project of mine follows.',
-  },
   sections: {
-    about: { overline: 'about', title: 'Engineer across the whole stack' },
-    experience: { overline: 'experience', title: 'Where I have shipped' },
+    about: { title: 'About' },
+    experience: { title: 'Experience' },
     projects: {
-      overline: 'projects',
-      title: 'Selected work',
-      subtitle: 'A few things I have designed, built and measured end to end.',
+      title: 'Projects',
+      subtitle: 'Hardware, firmware and software projects.',
     },
-    skills: { overline: 'skills', title: 'Tools I reach for' },
-    education: { overline: 'education', title: 'Studies and writing' },
-    now: { overline: 'now', title: "What I'm working on" },
+    skills: { title: 'Skills' },
+    education: { title: 'Education & publications' },
     contact: {
-      overline: 'contact',
-      title: "Let's build something",
-      lead: 'Open to hardware-adjacent software work and collaborations. The fastest way to reach me is email.',
+      title: 'Get in touch',
     },
   },
   experience: {
@@ -164,12 +146,8 @@ const EN: UiStrings = {
       'machine-learning': 'Machine Learning',
       robotics: 'Robotics',
     },
-    nextTitle: 'Next project',
-    nextNote: 'each project is one data file — the grid grows by itself',
     stackAria: 'Tech stack',
-    pageTitle: 'Projects',
     backHome: '← Home',
-    pageSubtitle: 'Everything I have built, filterable by discipline.',
   },
   contact: {
     downloadCvPdf: 'Download CV (PDF)',
@@ -210,31 +188,23 @@ const ES: UiStrings = {
   },
   hero: {
     sectionAria: 'Introducción',
-    overline: '// electrónica × software',
     viewProjects: 'Ver proyectos',
     downloadCv: 'Descargar CV',
     linkedin: 'LinkedIn',
     github: 'GitHub',
     email: 'Email',
   },
-  scope: {
-    caption: 'Del silicio a la interfaz — el camino que sigue cada proyecto mío.',
-  },
   sections: {
-    about: { overline: 'perfil', title: 'Ingeniería de punta a punta' },
-    experience: { overline: 'experiencia', title: 'Dónde estuve construyendo' },
+    about: { title: 'Perfil' },
+    experience: { title: 'Experiencia' },
     projects: {
-      overline: 'proyectos',
-      title: 'Trabajo seleccionado',
-      subtitle: 'Algunas cosas que diseñé, construí y medí de principio a fin.',
+      title: 'Proyectos',
+      subtitle: 'Proyectos de hardware, firmware y software.',
     },
-    skills: { overline: 'skills', title: 'Herramientas que uso' },
-    education: { overline: 'educación', title: 'Estudios y publicaciones' },
-    now: { overline: 'now', title: 'En qué estoy trabajando' },
+    skills: { title: 'Skills' },
+    education: { title: 'Educación y publicaciones' },
     contact: {
-      overline: 'contacto',
-      title: 'Construyamos algo',
-      lead: 'Disponible para software cercano al hardware y colaboraciones. La vía más rápida es el email.',
+      title: 'Contacto',
     },
   },
   experience: {
@@ -257,12 +227,8 @@ const ES: UiStrings = {
       'machine-learning': 'Machine Learning',
       robotics: 'Robótica',
     },
-    nextTitle: 'Próximo proyecto',
-    nextNote: 'cada proyecto es un archivo de datos — la grilla crece sola',
     stackAria: 'Stack técnico',
-    pageTitle: 'Proyectos',
     backHome: '← Inicio',
-    pageSubtitle: 'Todo lo que construí, filtrable por disciplina.',
   },
   contact: {
     downloadCvPdf: 'Descargar CV (PDF)',

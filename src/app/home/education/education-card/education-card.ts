@@ -1,9 +1,10 @@
-import { Component, computed, inject, input } from '@angular/core';
+import { Component, computed, inject, input, InputSignal, Signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { EducationItem } from '../../../data/education';
 import { IconName } from '../../../shared/icons/icons';
 import { I18n } from '../../../shared/i18n/i18n';
+import { UiStrings } from '../../../shared/i18n/ui-strings';
 import { Skeleton } from '../../../shared/ui/skeleton/skeleton';
 
 @Component({
@@ -16,11 +17,12 @@ import { Skeleton } from '../../../shared/ui/skeleton/skeleton';
   },
 })
 export class EducationCard {
-  protected readonly strings = inject(I18n).strings;
+  // Inputs
+  public readonly item: InputSignal<EducationItem | undefined> = input<EducationItem | undefined>();
 
-  readonly item = input<EducationItem | undefined>();
-
-  protected readonly icon = computed<IconName>(() =>
+  // View state
+  protected readonly strings: Signal<UiStrings> = inject(I18n).strings;
+  protected readonly icon: Signal<IconName> = computed<IconName>(() =>
     this.item()?.kind === 'publication' ? 'document' : 'school',
   );
 }

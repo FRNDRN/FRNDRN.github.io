@@ -13,7 +13,10 @@ function project(slug: string, categories: Project['categories']): Project {
     context: '',
     origin: '',
     metrics: [],
+    highlight: null,
     stack: [],
+    image: null,
+    caption: null,
     hasCaseStudy: false,
     links: [],
   };
@@ -36,7 +39,8 @@ describe('filterProjects', () => {
   });
 
   it('preserves the original order', () => {
-    expect(filterProjects(projects, 'embedded').map((p) => p.slug)).toEqual(['a', 'c']);
+    const reversed: readonly Project[] = [...projects].reverse();
+    expect(filterProjects(reversed, 'embedded').map((p) => p.slug)).toEqual(['c', 'a']);
   });
 
   it('returns an empty list for an empty input', () => {

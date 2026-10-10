@@ -1,6 +1,14 @@
-import { Component, inject, input, VERSION as NG_VERSION } from '@angular/core';
+import {
+  Component,
+  inject,
+  input,
+  InputSignal,
+  Signal,
+  VERSION as NG_VERSION,
+} from '@angular/core';
 import { VERSION as MAT_VERSION } from '@angular/material/core';
 import { I18n } from '../../shared/i18n/i18n';
+import { UiStrings } from '../../shared/i18n/ui-strings';
 import { Skeleton } from '../../shared/ui/skeleton/skeleton';
 
 @Component({
@@ -10,11 +18,12 @@ import { Skeleton } from '../../shared/ui/skeleton/skeleton';
   templateUrl: './footer.html',
 })
 export class Footer {
-  protected readonly strings = inject(I18n).strings;
+  // Inputs
+  public readonly name: InputSignal<string | undefined> = input<string | undefined>();
 
-  readonly name = input<string | undefined>();
-
-  protected readonly year = new Date().getFullYear();
-  protected readonly angularVersion = `${NG_VERSION.major}.${NG_VERSION.minor}`;
-  protected readonly materialVersion = `${MAT_VERSION.major}.${MAT_VERSION.minor}`;
+  // View state
+  protected readonly strings: Signal<UiStrings> = inject(I18n).strings;
+  protected readonly year: number = new Date().getFullYear();
+  protected readonly angularVersion: string = `${NG_VERSION.major}.${NG_VERSION.minor}`;
+  protected readonly materialVersion: string = `${MAT_VERSION.major}.${MAT_VERSION.minor}`;
 }
