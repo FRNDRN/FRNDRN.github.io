@@ -64,5 +64,32 @@ export function experienceContent(t: Translate): readonly Experience[] {
         'CMake',
       ],
     },
+    {
+      id: 'internship-2022',
+      role: t('Electronics Engineering Intern', 'Pasante de Ingeniería Electrónica'),
+      organization: 'VZ Ingeniería',
+      logo: null,
+      team: null,
+      location: t('Paraná, Argentina', 'Paraná, Argentina'),
+      start: '2022-03',
+      end: '2022-08',
+      summary: null,
+      highlights: [
+        t(
+          'Wrote PIC firmware in C and assembly for an autonomous waste-sorting bin prototype, reading sensors and driving actuators.',
+          'Escribí el firmware PIC en C y ensamblador para el prototipo de un cesto autónomo que separa residuos, con lectura de sensores y control de actuadores.',
+        ),
+        t(
+          'Designed its schematics and routed the PCB in Altium Designer, documented it with a BOM and flowcharts, and assembled, soldered and tested the prototype through bring-up.',
+          'Diseñé sus esquemáticos y ruteé la PCB en Altium Designer, lo documenté con BOM y diagramas de flujo, y armé, soldé y probé el prototipo hasta su puesta en marcha.',
+        ),
+        t(
+          'Scoped an electric thermostat installation for a client: how it works, the wiring needed and its cost.',
+          'Definí para un cliente la instalación de un termostato eléctrico: su funcionamiento, el cableado necesario y su costo.',
+        ),
+      ],
+      moreHighlights: [],
+      stack: ['PIC', 'MPLAB', 'C', 'Assembly', 'Altium Designer'],
+    },
   ];
 }
