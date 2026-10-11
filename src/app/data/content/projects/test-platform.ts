@@ -6,8 +6,8 @@ export function testPlatform(t: Translate): Project {
     slug: 'power-quality-test-platform',
     title: t('Power-quality test platform', 'Plataforma de ensayos de calidad de energía'),
     summary: t(
-      'Desktop platform for IEC 61000 compliance testing: an Angular + Electron interface driving a multithreaded C++ REST server that controls programmable power sources, DAQ devices and other electronic devices in real time over USB and LAN via SCPI.',
-      'Plataforma de escritorio para ensayos de conformidad IEC 61000: una interfaz en Angular + Electron que maneja un servidor REST en C++ multihilo que controla fuentes de potencia programables, dispositivos DAQ y otros dispositivos electrónicos en tiempo real por USB y LAN mediante SCPI.',
+      'Test suite for EMC and power-quality compliance testing: an Angular + Electron interface driving a multithreaded C++ REST server that controls programmable power sources, DAQ devices and other electronic devices in real time over USB and LAN via SCPI.',
+      'Suite de testeo para ensayos de conformidad EMC y de calidad de energía: una interfaz en Angular + Electron que maneja un servidor REST en C++ multihilo que controla fuentes de potencia programables, dispositivos DAQ y otros dispositivos electrónicos en tiempo real por USB y LAN mediante SCPI.',
     ),
     categories: ['web', 'embedded'],
     status: 'completed',
@@ -19,7 +19,7 @@ export function testPlatform(t: Translate): Project {
       'FIG. 01 — App de escritorio, servidor REST en C++ y equipos de ensayo',
     ),
     metrics: [
-      { value: '5', label: t('IEC 61000 test types', 'tipos de ensayo IEC 61000') },
+      { value: '6', label: t('IEC 61000 test types', 'tipos de ensayo IEC 61000') },
       { value: '2', label: t('legacy applications migrated', 'aplicaciones heredadas migradas') },
     ],
     highlight: 'USB · SCPI · REST · IEC 61000',
