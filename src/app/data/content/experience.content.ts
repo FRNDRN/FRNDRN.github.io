@@ -13,13 +13,13 @@ export function experienceContent(t: Translate): readonly Experience[] {
       start: '2023-07',
       end: null,
       summary: t(
-        'Joined as the project started and built, from its first version, a desktop platform for IEC 61000 power-quality compliance testing, used by labs in Europe and the US across energy, defense, naval and telecom. An Angular + Electron interface drives a multithreaded C++ REST server that controls programmable power sources and other electronic devices over USB and LAN via SCPI.',
-        'Me sumé cuando el proyecto arrancaba y construí, desde su primera versión, una plataforma de escritorio para ensayos de conformidad de calidad de energía IEC 61000, usada por laboratorios de Europa y EE. UU. en energía, defensa, naval y telecomunicaciones. Una interfaz en Angular + Electron maneja un servidor REST en C++ multihilo que controla fuentes de potencia programables y otros dispositivos electrónicos por USB y LAN mediante SCPI.',
+        'Joined as the project started and built, from its first version, a desktop platform for IEC 61000 power-quality compliance testing, used by labs in the US, Europe and China across energy, defense, naval and telecom. An Angular + Electron interface drives a multithreaded C++ REST server that controls programmable power sources and other electronic devices over USB and LAN via SCPI.',
+        'Me sumé cuando el proyecto arrancaba y construí, desde su primera versión, una plataforma de escritorio para ensayos de conformidad de calidad de energía IEC 61000, usada por laboratorios de EE. UU., Europa y China en energía, defensa, naval y telecomunicaciones. Una interfaz en Angular + Electron maneja un servidor REST en C++ multihilo que controla fuentes de potencia programables y otros dispositivos electrónicos por USB y LAN mediante SCPI.',
       ),
       highlights: [
         t(
-          'Implemented five IEC 61000 test types end to end, from reading the standard to lab validation: 4-11 and 4-34 (voltage dips and interruptions), 4-14 (fluctuations), 4-27 (unbalance) and 4-28 (frequency variation).',
-          'Implementé cinco tipos de ensayo IEC 61000 de punta a punta, desde la lectura de la norma hasta la validación en laboratorio: 4-11 y 4-34 (huecos e interrupciones de tensión), 4-14 (fluctuaciones), 4-27 (desequilibrio) y 4-28 (variación de frecuencia).',
+          'Implemented five IEC 61000 test types end to end, from reading the standard to lab validation: 4-11 and 4-34 (voltage dips and interruptions), 4-14 (fluctuations), 4-27 (unbalance) and 4-28 (frequency variation). This included integrating the voltage-dip generator that 4-11, 4-27 and 4-34 rely on, from its USB communication to its full calibration.',
+          'Implementé cinco tipos de ensayo IEC 61000 de punta a punta, desde la lectura de la norma hasta la validación en laboratorio: 4-11 y 4-34 (huecos e interrupciones de tensión), 4-14 (fluctuaciones), 4-27 (desequilibrio) y 4-28 (variación de frecuencia). Esto incluyó integrar el generador de huecos de tensión en el que se apoyan 4-11, 4-27 y 4-34, desde su comunicación USB hasta su calibración completa.',
         ),
         t(
           'Made an unreliable legacy instrument dependable by redesigning how the software communicates with it: tests no longer stall or need manual intervention, and they now meet the timing the standards require.',
@@ -31,10 +31,6 @@ export function experienceContent(t: Translate): readonly Experience[] {
         ),
       ],
       moreHighlights: [
-        t(
-          'Integrated a voltage-dip generator end to end, from communication and full calibration to its control screen, leaving it ready for compliance testing.',
-          'Integré de punta a punta un generador de huecos de tensión, desde la comunicación y la calibración completa hasta su pantalla de control, dejándolo listo para ensayos de conformidad.',
-        ),
         t(
           'Built the report system: editable templates and generation to DOCX, PDF and RTF.',
           'Construí el sistema de reportes: plantillas editables y generación a DOCX, PDF y RTF.',

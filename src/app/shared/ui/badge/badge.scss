@@ -2,12 +2,12 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  height: 28px;
-  padding: 0 10px;
+  min-height: 28px;
+  padding: 4px 10px;
+  box-sizing: border-box;
   border-radius: 8px;
   font-size: var(--app-text-sm);
   font-weight: 500;
-  white-space: nowrap;
 }
 
 :host(.badge--tertiary) {

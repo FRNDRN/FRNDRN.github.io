@@ -6,8 +6,8 @@ export function rosbot(t: Translate): Project {
     slug: 'rosbot',
     title: 'ROSbot',
     summary: t(
-      'Side project: an autonomous mobile robot on ROS 2, set up in a containerized development environment. Notes and results will be added as it grows.',
-      'Proyecto personal: un robot móvil autónomo sobre ROS 2, montado en un entorno de desarrollo containerizado. Se irán agregando notas y resultados a medida que avance.',
+      'Side project: an autonomous mobile robot on ROS 2, set up in a containerized development environment.',
+      'Proyecto personal: un robot móvil autónomo sobre ROS 2, montado en un entorno de desarrollo containerizado.',
     ),
     categories: ['robotics'],
     status: 'in-progress',
@@ -24,7 +24,10 @@ export function rosbot(t: Translate): Project {
         'Render del chasis de cuatro ruedas planificado: motores traseros, dirección Ackermann, lidar 2D y cámara.',
       ),
     },
-    caption: null,
+    caption: t(
+      'FIG. 03 — Planned chassis: Ackermann steering, 2D lidar and camera',
+      'FIG. 03 — Chasis planificado: dirección Ackermann, lidar 2D y cámara',
+    ),
     hasCaseStudy: false,
     links: [],
   };

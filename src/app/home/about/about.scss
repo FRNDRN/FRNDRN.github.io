@@ -11,7 +11,7 @@
   @include layout.section-container;
 
   @include bp.from(large) {
-    grid-template-columns: 380px 1fr;
+    grid-template-columns: 380px minmax(0, 1fr);
     gap: clamp(40px, 5vw, 72px);
     align-items: start;
   }
@@ -37,11 +37,11 @@
 
 .stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--app-gap);
   margin-top: var(--app-gap);
 
   @include bp.below(medium) {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }

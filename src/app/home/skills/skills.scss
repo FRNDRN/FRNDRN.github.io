@@ -11,7 +11,7 @@
 
 .row {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--app-gap);
   margin-top: var(--app-gap);
 }
@@ -19,6 +19,23 @@
 .row--large,
 .row--outlined {
   @include bp.from(expanded) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.row--outlined {
+  // An odd card left alone in two columns takes the full row
+  @include bp.from(expanded) {
+    > :last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @include bp.from(large) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    > :last-child:nth-child(odd) {
+      grid-column: auto;
+    }
   }
 }

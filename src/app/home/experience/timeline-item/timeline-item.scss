@@ -6,11 +6,11 @@
 
 .row {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 12px;
 
   @include bp.from(large) {
-    grid-template-columns: 200px 40px 1fr;
+    grid-template-columns: 200px 40px minmax(0, 1fr);
     gap: var(--app-gap);
     align-items: start;
   }

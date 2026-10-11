@@ -38,7 +38,10 @@ export function wildlifeMonitoring(t: Translate): Project {
         'Render de la cámara trampa sobre un poste: panel solar, cabezal de sensores PIR que capta el calor de un ciervo y gabinete giratorio de la cámara con LEDs infrarrojos sobre un soporte lateral.',
       ),
     },
-    caption: null,
+    caption: t(
+      'FIG. 02 — Camera trap on its pole: PIR sensors, rotating camera and solar panel',
+      'FIG. 02 — Cámara trampa en su poste: sensores PIR, cámara giratoria y panel solar',
+    ),
     hasCaseStudy: false,
     links: [
       { label: t('Report', 'Informe'), url: 'https://ria.utn.edu.ar/handle/20.500.12272/8159' },

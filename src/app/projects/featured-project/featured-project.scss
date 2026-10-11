@@ -11,10 +11,10 @@
   background: var(--mat-sys-surface-container-low);
 }
 
-// Two columns once the card itself is wide enough; stacked otherwise.
-@container (min-width: 900px) {
+// Two columns once the text side gets at least 360px; stacked otherwise
+@container (min-width: 1084px) {
   .featured:not(.featured--text-only) {
-    grid-template-columns: 620px 1fr;
+    grid-template-columns: 620px minmax(0, 1fr);
     align-items: start;
   }
 }

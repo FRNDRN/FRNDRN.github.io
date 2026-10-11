@@ -31,7 +31,7 @@ export interface Project {
   readonly highlight: string | null; // mono line on the card (protocols, key metric)
   readonly stack: readonly string[];
   readonly image: ImageAsset | null;
-  readonly caption: string | null; // figure caption, shown when the project is featured
+  readonly caption: string | null; // figure caption under the image
   readonly hasCaseStudy: boolean;
   readonly links: readonly ProjectLink[]; // Report, Code, Schematics…
 }

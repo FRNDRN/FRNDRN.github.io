@@ -1,13 +1,18 @@
 <article class="card">
   @if (project(); as p) {
     @if (p.image !== null) {
-      <div class="media">
-        <img
-          [ngSrc]="p.image.src"
-          [alt]="p.image.alt"
-          fill
-          sizes="(min-width: 840px) 50vw, 100vw" />
-      </div>
+      <figure class="figure">
+        <div class="media">
+          <img
+            [ngSrc]="p.image.src"
+            [alt]="p.image.alt"
+            fill
+            sizes="(min-width: 840px) 50vw, 100vw" />
+        </div>
+        @if (p.caption !== null) {
+          <figcaption class="fig">{{ p.caption }}</figcaption>
+        }
+      </figure>
     }
     <div class="top">
       <p class="categories">{{ categoryLabel(p) }}</p>

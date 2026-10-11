@@ -12,11 +12,14 @@
   background: var(--mat-sys-surface-container-low);
 }
 
+.figure {
+  margin: 0 0 16px;
+}
+
 // Same proportion as the project illustrations, so they show whole instead of cropped.
 .media {
   position: relative;
   aspect-ratio: 620 / 440;
-  margin-bottom: 16px;
   overflow: hidden;
   border-radius: 20px;
   background: var(--mat-sys-surface-container-high);
@@ -28,6 +31,7 @@
 
 .media--placeholder {
   display: grid;
+  margin-bottom: 16px;
   place-items: center;
   color: var(--mat-sys-on-surface-variant);
 
@@ -36,6 +40,13 @@
     height: 40px;
     font-size: 40px;
   }
+}
+
+.fig {
+  margin: 12px 4px 0;
+  color: var(--mat-sys-on-surface-variant);
+  font-family: var(--app-font-mono);
+  font-size: var(--app-text-sm);
 }
 
 .top {
