@@ -1,63 +1,63 @@
 # Portfolio
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.0.
+My personal portfolio, in English and Spanish: **[frndrn.github.io](https://frndrn.github.io/)**
 
-## Development server
+![Portfolio preview](public/og-image.jpg)
 
-To start a local development server, run:
+## Stack
 
-```bash
-ng serve
+- **Angular 22**: standalone components, signals for state and zoneless change detection (no `zone.js`).
+- **Angular Material**, with light, dark and system themes.
+- **Static prerendering**: every route is rendered to HTML at build time, so it runs on GitHub
+  Pages and link previews show real content.
+- **ESLint, Prettier and Vitest**, all run in CI before each deploy.
+
+## How it's organised
+
+```
+src/app/
+├── data/                 Content model and the Portfolio service
+│   ├── content/          All the site's text, one file per section
+│   │   └── projects/     One file per project
+│   └── portfolio.ts      Serves the content to the UI
+├── home/                 Home page sections
+├── projects/             /projects page and its filters
+├── layout/               App bar, bottom nav, footer
+└── shared/               i18n, theme, icons and small UI pieces
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+I kept the content apart from the components. Every text is written once, with both languages
+side by side:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```ts
+role: t('Software & Firmware Engineer', 'Ingeniero de Software y Firmware'),
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+`t` picks the active language, and the `Portfolio` service exposes each section as a signal, so
+switching language just recomputes the content. Components never import the content files
+directly. UI labels (nav, buttons) live in `src/app/shared/i18n/ui-strings.ts`.
+
+English is the default and the one that gets prerendered. If you pick Spanish, it's applied in
+the browser after hydration and remembered for your next visit.
+
+### Adding a project
+
+1. Create `src/app/data/content/projects/<name>.ts` returning a `Project`
+   (fields in `src/app/data/project.ts`).
+2. Add it to `src/app/data/content/projects/index.ts`. That list sets the display order.
+3. Put its image in `public/images/projects/`.
+
+## Running it
+
+Needs Node 24 (`.nvmrc`).
 
 ```bash
-ng generate --help
+npm ci          # install
+npm start       # dev server at http://localhost:4200
+npm run lint
+npm test
+npm run build   # prerendered output in dist/portfolio/browser
 ```
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-
-## Credits
-
-Technology logos from Simple Icons (CC0); Angular logo CC BY 4.0, Git logo CC BY 3.0. All logos are trademarks of their respective owners.
+Pushing to `main` lints, tests, builds and deploys to GitHub Pages
+(`.github/workflows/deploy.yml`).
